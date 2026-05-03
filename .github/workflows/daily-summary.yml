@@ -1,15 +1,25 @@
 name: Daily Horizon Summary
 
 on:
-  # schedule:
-  #   - cron: '0 0 */2 * *'  # Runs every 2 days at 00:00 UTC
-  workflow_dispatch:      # Allow manual trigger
+  schedule:
+    # Run every day at 00:00 UTC / 08:00 Asia/Shanghai.
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+    inputs:
+      hours:
+        description: 'How many hours of content to fetch'
+        required: false
+        default: '24'
+
+concurrency:
+  group: horizon-daily-summary
+  cancel-in-progress: false
 
 jobs:
   daily-summary:
     runs-on: ubuntu-latest
     permissions:
-      contents: write  # Needed to commit changes
+      contents: write  # Needed to commit generated Pages content
 
     steps:
       - name: Checkout code
@@ -26,25 +36,36 @@ jobs:
       - name: Install dependencies
         run: uv sync
 
+      - name: Resolve fetch window
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ -n "${{ github.event.inputs.hours }}" ]; then
+            echo "HORIZON_HOURS=${{ github.event.inputs.hours }}" >> "$GITHUB_ENV"
+          else
+            echo "HORIZON_HOURS=24" >> "$GITHUB_ENV"
+          fi
+
       - name: Run Horizon
         env:
-          # Map secrets to environment variables expected by config.json
-          # Modify these based on your config.json provider settings
+          # data/config.json currently uses provider=openai with a DeepSeek-compatible base_url,
+          # so OPENAI_API_KEY should contain your DeepSeek API key unless you change config.json.
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
           LWN_KEY: ${{ secrets.LWN_KEY }}
-        run: uv run horizon --hours 48
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+          HORIZON_WEBHOOK_URL: ${{ secrets.HORIZON_WEBHOOK_URL }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: uv run horizon --hours "$HORIZON_HOURS"
 
       - name: Set current date as environment variable
-        run: echo "DATE=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
+        run: echo "DATE=$(date +'%Y-%m-%d')" >> "$GITHUB_ENV"
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./docs
-          keep_files: true  # Keep existing summaries on gh-pages branch
+          keep_files: true
           commit_message: "📝 Daily Summary: ${{ env.DATE }}"
           publish_branch: gh-pages
           enable_jekyll: true
