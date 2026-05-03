@@ -49,11 +49,7 @@ jobs:
           # data/config.json currently uses provider=openai with a DeepSeek-compatible base_url,
           # so OPENAI_API_KEY should contain your DeepSeek API key unless you change config.json.
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
-          LWN_KEY: ${{ secrets.LWN_KEY }}
           APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
-          HORIZON_WEBHOOK_URL: ${{ secrets.HORIZON_WEBHOOK_URL }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: uv run horizon --hours "$HORIZON_HOURS"
 
