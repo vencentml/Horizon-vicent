@@ -44,6 +44,38 @@ jobs:
             echo "HORIZON_HOURS=24" >> "$GITHUB_ENV"
           fi
 
+      - name: Validate Horizon configuration
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          config = json.loads(Path('data/config.json').read_text(encoding='utf-8'))
+          print('Config loaded: data/config.json')
+          print('AI provider:', config['ai'].get('provider'))
+          print('AI model:', config['ai'].get('model'))
+          print('AI base_url:', config['ai'].get('base_url'))
+          print('Languages:', ', '.join(config['ai'].get('languages', ['en'])))
+          print('Webhook enabled:', config.get('webhook', {}).get('enabled'))
+          print('RSS sources:', ', '.join(item['name'] for item in config.get('sources', {}).get('rss', [])))
+          print('Twitter enabled:', config.get('sources', {}).get('twitter', {}).get('enabled'))
+
+          required = [config['ai'].get('api_key_env')]
+          if config.get('sources', {}).get('twitter', {}).get('enabled'):
+              required.append(config.get('sources', {}).get('twitter', {}).get('apify_token_env', 'APIFY_TOKEN'))
+
+          missing = [name for name in required if name and not os.environ.get(name)]
+          if missing:
+              raise SystemExit('Missing required environment variables: ' + ', '.join(missing))
+
+          print('Required environment variables are present.')
+          PY
+
       - name: Run Horizon
         env:
           # data/config.json currently uses provider=openai with a DeepSeek-compatible base_url,
