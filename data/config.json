@@ -2,7 +2,7 @@
   "version": "1.0",
   "ai": {
     "provider": "openai",
-    "model": "deepseek-v4-pro",
+    "model": "deepseek-v4-flash",
     "base_url": "https://api.deepseek.com",
     "api_key_env": "OPENAI_API_KEY",
     "temperature": 0.25,
