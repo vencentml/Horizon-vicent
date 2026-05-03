@@ -5,12 +5,12 @@
     "model": "deepseek-v4-pro",
     "base_url": "https://api.deepseek.com",
     "api_key_env": "OPENAI_API_KEY",
-    "temperature": 0.3,
+    "temperature": 0.25,
     "max_tokens": 8192,
     "languages": [
-      "zh",
-      "en"
-    ]
+      "zh"
+    ],
+    "throttle_sec": 0
   },
   "sources": {
     "github": [
@@ -36,25 +36,139 @@
         "owner": "triton-lang",
         "repo": "triton",
         "enabled": true
+      },
+      {
+        "type": "repo_releases",
+        "owner": "ggerganov",
+        "repo": "llama.cpp",
+        "enabled": true
+      },
+      {
+        "type": "repo_releases",
+        "owner": "ollama",
+        "repo": "ollama",
+        "enabled": true
+      },
+      {
+        "type": "repo_releases",
+        "owner": "huggingface",
+        "repo": "transformers",
+        "enabled": true
+      },
+      {
+        "type": "repo_releases",
+        "owner": "langchain-ai",
+        "repo": "langgraph",
+        "enabled": true
+      },
+      {
+        "type": "repo_releases",
+        "owner": "aider-ai",
+        "repo": "aider",
+        "enabled": true
+      },
+      {
+        "type": "repo_releases",
+        "owner": "continuedev",
+        "repo": "continue",
+        "enabled": true
+      },
+      {
+        "type": "repo_releases",
+        "owner": "cline",
+        "repo": "cline",
+        "enabled": true
+      },
+      {
+        "type": "repo_releases",
+        "owner": "RooVetGit",
+        "repo": "Roo-Code",
+        "enabled": true
+      },
+      {
+        "type": "repo_releases",
+        "owner": "browser-use",
+        "repo": "browser-use",
+        "enabled": true
+      },
+      {
+        "type": "repo_releases",
+        "owner": "modelcontextprotocol",
+        "repo": "servers",
+        "enabled": true
+      },
+      {
+        "type": "repo_releases",
+        "owner": "microsoft",
+        "repo": "playwright-mcp",
+        "enabled": true
+      },
+      {
+        "type": "repo_releases",
+        "owner": "openai",
+        "repo": "openai-agents-python",
+        "enabled": true
       }
     ],
     "hackernews": {
       "enabled": true,
-      "fetch_top_stories": 30,
-      "min_score": 150
+      "fetch_top_stories": 50,
+      "min_score": 80
     },
     "rss": [
       {
         "name": "Simon Willison",
         "url": "https://simonwillison.net/atom/everything/",
         "enabled": true,
-        "category": "ai-tools"
+        "category": "ai-coding-and-tools"
       },
       {
         "name": "GitHub Trending - Daily",
         "url": "https://mshibanami.github.io/GitHubTrendingRSS/daily/all.xml",
         "enabled": true,
-        "category": "github-trending"
+        "category": "open-source-trending"
+      },
+      {
+        "name": "Google Research Blog",
+        "url": "https://research.google/blog/rss/",
+        "enabled": true,
+        "category": "ai-research"
+      },
+      {
+        "name": "Anthropic News",
+        "url": "https://www.anthropic.com/news/rss.xml",
+        "enabled": true,
+        "category": "ai-labs"
+      },
+      {
+        "name": "OpenAI News",
+        "url": "https://openai.com/news/rss.xml",
+        "enabled": true,
+        "category": "ai-labs"
+      },
+      {
+        "name": "Latent Space",
+        "url": "https://www.latent.space/feed",
+        "enabled": true,
+        "category": "ai-industry-and-practice"
+      },
+      {
+        "name": "The Pragmatic Engineer",
+        "url": "https://blog.pragmaticengineer.com/rss/",
+        "enabled": true,
+        "category": "engineering-and-products"
+      },
+      {
+        "name": "ISW Ukraine Updates",
+        "url": "https://www.understandingwar.org/rss.xml",
+        "enabled": true,
+        "category": "ukraine-war"
+      },
+      {
+        "name": "Kyiv Independent",
+        "url": "https://kyivindependent.com/rss/",
+        "enabled": true,
+        "category": "ukraine-war"
       }
     ],
     "reddit": {
@@ -65,46 +179,61 @@
           "enabled": true,
           "sort": "hot",
           "time_filter": "day",
-          "fetch_limit": 15,
-          "min_score": 60
+          "fetch_limit": 20,
+          "min_score": 40
         },
         {
           "subreddit": "LocalLLaMA",
           "enabled": true,
           "sort": "hot",
           "time_filter": "day",
+          "fetch_limit": 20,
+          "min_score": 40
+        },
+        {
+          "subreddit": "ArtificialInteligence",
+          "enabled": true,
+          "sort": "hot",
+          "time_filter": "day",
           "fetch_limit": 15,
-          "min_score": 60
+          "min_score": 30
+        },
+        {
+          "subreddit": "singularity",
+          "enabled": true,
+          "sort": "hot",
+          "time_filter": "day",
+          "fetch_limit": 15,
+          "min_score": 50
+        },
+        {
+          "subreddit": "netsec",
+          "enabled": true,
+          "sort": "hot",
+          "time_filter": "day",
+          "fetch_limit": 10,
+          "min_score": 50
         }
       ],
       "users": [],
-      "fetch_comments": 10
+      "fetch_comments": 5
     },
     "telegram": {
-      "enabled": true,
-      "channels": [
-        {
-          "channel": "zaihuapd",
-          "enabled": true,
-          "fetch_limit": 20
-        }
-      ]
+      "enabled": false,
+      "channels": []
     },
     "twitter": {
-      "enabled": true,
-      "users": [
-        "karpathy",
-        "roifex"
-      ],
-      "fetch_limit": 10,
+      "enabled": false,
+      "users": [],
+      "fetch_limit": 0,
       "fetch_reply_text": false,
-      "max_replies_per_tweet": 3,
-      "max_tweets_to_expand": 10,
-      "reply_min_likes": 5
+      "max_replies_per_tweet": 0,
+      "max_tweets_to_expand": 0,
+      "reply_min_likes": 0
     }
   },
   "filtering": {
-    "ai_score_threshold": 8.0,
+    "ai_score_threshold": 7.0,
     "time_window_hours": 24
   },
   "webhook": {
