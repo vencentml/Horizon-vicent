@@ -14,131 +14,27 @@
   },
   "sources": {
     "github": [
-      {
-        "type": "user_events",
-        "username": "karpathy",
-        "enabled": true
-      },
-      {
-        "type": "repo_releases",
-        "owner": "vllm-project",
-        "repo": "vllm",
-        "enabled": true
-      },
-      {
-        "type": "repo_releases",
-        "owner": "sgl-project",
-        "repo": "sglang",
-        "enabled": true
-      },
-      {
-        "type": "repo_releases",
-        "owner": "triton-lang",
-        "repo": "triton",
-        "enabled": true
-      },
-      {
-        "type": "repo_releases",
-        "owner": "ggerganov",
-        "repo": "llama.cpp",
-        "enabled": true
-      },
-      {
-        "type": "repo_releases",
-        "owner": "ollama",
-        "repo": "ollama",
-        "enabled": true
-      },
-      {
-        "type": "repo_releases",
-        "owner": "huggingface",
-        "repo": "transformers",
-        "enabled": true
-      },
-      {
-        "type": "repo_releases",
-        "owner": "langchain-ai",
-        "repo": "langgraph",
-        "enabled": true
-      },
-      {
-        "type": "repo_releases",
-        "owner": "aider-ai",
-        "repo": "aider",
-        "enabled": true
-      },
-      {
-        "type": "repo_releases",
-        "owner": "continuedev",
-        "repo": "continue",
-        "enabled": true
-      },
-      {
-        "type": "repo_releases",
-        "owner": "cline",
-        "repo": "cline",
-        "enabled": true
-      },
-      {
-        "type": "repo_releases",
-        "owner": "RooVetGit",
-        "repo": "Roo-Code",
-        "enabled": true
-      },
-      {
-        "type": "repo_releases",
-        "owner": "browser-use",
-        "repo": "browser-use",
-        "enabled": true
-      },
-      {
-        "type": "repo_releases",
-        "owner": "modelcontextprotocol",
-        "repo": "servers",
-        "enabled": true
-      },
-      {
-        "type": "repo_releases",
-        "owner": "microsoft",
-        "repo": "playwright-mcp",
-        "enabled": true
-      },
-      {
-        "type": "repo_releases",
-        "owner": "openai",
-        "repo": "openai-agents-python",
-        "enabled": true
-      },
-      {
-        "type": "repo_releases",
-        "owner": "pytorch",
-        "repo": "pytorch",
-        "enabled": true
-      },
-      {
-        "type": "repo_releases",
-        "owner": "langchain-ai",
-        "repo": "langchain",
-        "enabled": true
-      },
-      {
-        "type": "repo_releases",
-        "owner": "vercel",
-        "repo": "next.js",
-        "enabled": true
-      },
-      {
-        "type": "repo_releases",
-        "owner": "kubernetes",
-        "repo": "kubernetes",
-        "enabled": true
-      },
-      {
-        "type": "repo_releases",
-        "owner": "rust-lang",
-        "repo": "rust",
-        "enabled": true
-      }
+      {"type": "user_events", "username": "karpathy", "enabled": true},
+      {"type": "repo_releases", "owner": "vllm-project", "repo": "vllm", "enabled": true},
+      {"type": "repo_releases", "owner": "sgl-project", "repo": "sglang", "enabled": true},
+      {"type": "repo_releases", "owner": "triton-lang", "repo": "triton", "enabled": true},
+      {"type": "repo_releases", "owner": "ggerganov", "repo": "llama.cpp", "enabled": true},
+      {"type": "repo_releases", "owner": "ollama", "repo": "ollama", "enabled": true},
+      {"type": "repo_releases", "owner": "huggingface", "repo": "transformers", "enabled": true},
+      {"type": "repo_releases", "owner": "langchain-ai", "repo": "langgraph", "enabled": true},
+      {"type": "repo_releases", "owner": "aider-ai", "repo": "aider", "enabled": true},
+      {"type": "repo_releases", "owner": "continuedev", "repo": "continue", "enabled": true},
+      {"type": "repo_releases", "owner": "cline", "repo": "cline", "enabled": true},
+      {"type": "repo_releases", "owner": "RooVetGit", "repo": "Roo-Code", "enabled": true},
+      {"type": "repo_releases", "owner": "browser-use", "repo": "browser-use", "enabled": true},
+      {"type": "repo_releases", "owner": "modelcontextprotocol", "repo": "servers", "enabled": true},
+      {"type": "repo_releases", "owner": "microsoft", "repo": "playwright-mcp", "enabled": true},
+      {"type": "repo_releases", "owner": "openai", "repo": "openai-agents-python", "enabled": true},
+      {"type": "repo_releases", "owner": "pytorch", "repo": "pytorch", "enabled": true},
+      {"type": "repo_releases", "owner": "langchain-ai", "repo": "langchain", "enabled": true},
+      {"type": "repo_releases", "owner": "vercel", "repo": "next.js", "enabled": true},
+      {"type": "repo_releases", "owner": "kubernetes", "repo": "kubernetes", "enabled": true},
+      {"type": "repo_releases", "owner": "rust-lang", "repo": "rust", "enabled": true}
     ],
     "hackernews": {
       "enabled": true,
@@ -146,263 +42,53 @@
       "min_score": 80
     },
     "rss": [
-      {
-        "name": "Simon Willison",
-        "url": "https://simonwillison.net/atom/everything/",
-        "enabled": true,
-        "category": "ai-coding-and-tools"
-      },
-      {
-        "name": "GitHub Trending - Daily",
-        "url": "https://mshibanami.github.io/GitHubTrendingRSS/daily/all.xml",
-        "enabled": true,
-        "category": "open-source-trending"
-      },
-      {
-        "name": "Google Research Blog",
-        "url": "https://research.google/blog/rss/",
-        "enabled": true,
-        "category": "ai-research"
-      },
-      {
-        "name": "Anthropic News",
-        "url": "https://www.anthropic.com/news/rss.xml",
-        "enabled": true,
-        "category": "ai-labs"
-      },
-      {
-        "name": "OpenAI News",
-        "url": "https://openai.com/news/rss.xml",
-        "enabled": true,
-        "category": "ai-labs"
-      },
-      {
-        "name": "Latent Space",
-        "url": "https://www.latent.space/feed",
-        "enabled": true,
-        "category": "ai-industry-and-practice"
-      },
-      {
-        "name": "The Pragmatic Engineer",
-        "url": "https://blog.pragmaticengineer.com/rss/",
-        "enabled": true,
-        "category": "engineering-and-products"
-      },
-      {
-        "name": "ISW Ukraine Updates",
-        "url": "https://www.understandingwar.org/rss.xml",
-        "enabled": true,
-        "category": "ukraine-war"
-      },
-      {
-        "name": "Kyiv Independent",
-        "url": "https://kyivindependent.com/rss/",
-        "enabled": true,
-        "category": "ukraine-war"
-      },
-      {
-        "name": "Google AI Blog",
-        "url": "https://blog.google/technology/ai/rss/",
-        "enabled": true,
-        "category": "ai-labs"
-      },
-      {
-        "name": "BAIR Blog",
-        "url": "https://bair.berkeley.edu/blog/feed.xml",
-        "enabled": true,
-        "category": "ai-research"
-      },
-      {
-        "name": "Hugging Face Blog",
-        "url": "https://huggingface.co/blog/feed.xml",
-        "enabled": true,
-        "category": "ai-engineering"
-      },
-      {
-        "name": "Lilian Weng",
-        "url": "https://lilianweng.github.io/index.xml",
-        "enabled": true,
-        "category": "ai-research"
-      },
-      {
-        "name": "arXiv cs.AI",
-        "url": "https://rss.arxiv.org/rss/cs.AI",
-        "enabled": true,
-        "category": "paper-ai"
-      },
-      {
-        "name": "arXiv cs.LG",
-        "url": "https://rss.arxiv.org/rss/cs.LG",
-        "enabled": true,
-        "category": "paper-ml"
-      },
-      {
-        "name": "arXiv cs.CL",
-        "url": "https://rss.arxiv.org/rss/cs.CL",
-        "enabled": true,
-        "category": "paper-nlp"
-      },
-      {
-        "name": "Netflix TechBlog",
-        "url": "https://netflixtechblog.com/feed",
-        "enabled": true,
-        "category": "engineering"
-      },
-      {
-        "name": "Cloudflare Blog",
-        "url": "https://blog.cloudflare.com/rss/",
-        "enabled": true,
-        "category": "infrastructure"
-      },
-      {
-        "name": "Stripe Engineering",
-        "url": "https://stripe.com/blog/engineering/rss",
-        "enabled": true,
-        "category": "engineering"
-      },
-      {
-        "name": "Uber Engineering",
-        "url": "https://www.uber.com/blog/engineering/rss/",
-        "enabled": true,
-        "category": "engineering"
-      },
-      {
-        "name": "Meta Engineering",
-        "url": "https://engineering.fb.com/feed/",
-        "enabled": true,
-        "category": "engineering"
-      },
-      {
-        "name": "GitHub Engineering",
-        "url": "https://github.blog/engineering/feed/",
-        "enabled": true,
-        "category": "developer-platform"
-      },
-      {
-        "name": "Shopify Engineering",
-        "url": "https://shopify.engineering/blog.atom",
-        "enabled": true,
-        "category": "engineering"
-      },
-      {
-        "name": "Stratechery",
-        "url": "https://stratechery.com/feed/",
-        "enabled": true,
-        "category": "strategy"
-      },
-      {
-        "name": "a16z",
-        "url": "https://a16z.com/feed/",
-        "enabled": true,
-        "category": "venture"
-      },
-      {
-        "name": "First Round Review",
-        "url": "https://review.firstround.com/feed.xml",
-        "enabled": true,
-        "category": "startup"
-      },
-      {
-        "name": "NFX",
-        "url": "https://www.nfx.com/rss",
-        "enabled": true,
-        "category": "startup"
-      },
-      {
-        "name": "Sequoia",
-        "url": "https://www.sequoiacap.com/feed/",
-        "enabled": true,
-        "category": "venture"
-      },
-      {
-        "name": "Marginal Revolution",
-        "url": "https://feeds.feedblitz.com/marginalrevolution/feed",
-        "enabled": true,
-        "category": "economics"
-      },
-      {
-        "name": "WHO Disease Outbreak News",
-        "url": "https://www.who.int/feeds/entity/csr/don/en/rss.xml",
-        "enabled": true,
-        "category": "risk-health"
-      }
+      {"name": "Simon Willison", "url": "https://simonwillison.net/atom/everything/", "enabled": true, "category": "ai-coding-and-tools"},
+      {"name": "GitHub Trending - Daily", "url": "https://mshibanami.github.io/GitHubTrendingRSS/daily/all.xml", "enabled": true, "category": "open-source-trending"},
+      {"name": "Google Research Blog", "url": "https://research.google/blog/rss/", "enabled": true, "category": "ai-research"},
+      {"name": "Anthropic News", "url": "https://www.anthropic.com/news/rss.xml", "enabled": true, "category": "ai-labs"},
+      {"name": "OpenAI News", "url": "https://openai.com/news/rss.xml", "enabled": true, "category": "ai-labs"},
+      {"name": "Latent Space", "url": "https://www.latent.space/feed", "enabled": true, "category": "ai-industry-and-practice"},
+      {"name": "The Pragmatic Engineer", "url": "https://blog.pragmaticengineer.com/rss/", "enabled": true, "category": "engineering-and-products"},
+      {"name": "ISW Ukraine Updates", "url": "https://www.understandingwar.org/rss.xml", "enabled": true, "category": "ukraine-war"},
+      {"name": "Kyiv Independent", "url": "https://kyivindependent.com/rss/", "enabled": true, "category": "ukraine-war"},
+      {"name": "Google AI Blog", "url": "https://blog.google/technology/ai/rss/", "enabled": true, "category": "ai-labs"},
+      {"name": "BAIR Blog", "url": "https://bair.berkeley.edu/blog/feed.xml", "enabled": true, "category": "ai-research"},
+      {"name": "Hugging Face Blog", "url": "https://huggingface.co/blog/feed.xml", "enabled": true, "category": "ai-engineering"},
+      {"name": "Lilian Weng", "url": "https://lilianweng.github.io/index.xml", "enabled": true, "category": "ai-research"},
+      {"name": "arXiv cs.AI", "url": "https://rss.arxiv.org/rss/cs.AI", "enabled": false, "category": "paper-ai"},
+      {"name": "arXiv cs.LG", "url": "https://rss.arxiv.org/rss/cs.LG", "enabled": false, "category": "paper-ml"},
+      {"name": "arXiv cs.CL", "url": "https://rss.arxiv.org/rss/cs.CL", "enabled": false, "category": "paper-nlp"},
+      {"name": "Netflix TechBlog", "url": "https://netflixtechblog.com/feed", "enabled": false, "category": "engineering"},
+      {"name": "Cloudflare Blog", "url": "https://blog.cloudflare.com/rss/", "enabled": true, "category": "infrastructure"},
+      {"name": "Stripe Engineering", "url": "https://stripe.com/blog/engineering/rss", "enabled": false, "category": "engineering"},
+      {"name": "Uber Engineering", "url": "https://www.uber.com/blog/engineering/rss/", "enabled": false, "category": "engineering"},
+      {"name": "Meta Engineering", "url": "https://engineering.fb.com/feed/", "enabled": true, "category": "engineering"},
+      {"name": "GitHub Engineering", "url": "https://github.blog/engineering/feed/", "enabled": true, "category": "developer-platform"},
+      {"name": "Shopify Engineering", "url": "https://shopify.engineering/blog.atom", "enabled": false, "category": "engineering"},
+      {"name": "Stratechery", "url": "https://stratechery.com/feed/", "enabled": true, "category": "strategy"},
+      {"name": "a16z", "url": "https://a16z.com/feed/", "enabled": false, "category": "venture"},
+      {"name": "First Round Review", "url": "https://review.firstround.com/feed.xml", "enabled": false, "category": "startup"},
+      {"name": "NFX", "url": "https://www.nfx.com/rss", "enabled": false, "category": "startup"},
+      {"name": "Sequoia", "url": "https://www.sequoiacap.com/feed/", "enabled": true, "category": "venture"},
+      {"name": "Marginal Revolution", "url": "https://feeds.feedblitz.com/marginalrevolution/feed", "enabled": false, "category": "economics"},
+      {"name": "WHO Disease Outbreak News", "url": "https://www.who.int/feeds/entity/csr/don/en/rss.xml", "enabled": false, "category": "risk-health"}
     ],
     "reddit": {
       "enabled": true,
       "subreddits": [
-        {
-          "subreddit": "MachineLearning",
-          "enabled": true,
-          "sort": "top",
-          "time_filter": "day",
-          "fetch_limit": 40,
-          "min_score": 30
-        },
-        {
-          "subreddit": "LocalLLaMA",
-          "enabled": true,
-          "sort": "top",
-          "time_filter": "day",
-          "fetch_limit": 40,
-          "min_score": 30
-        },
-        {
-          "subreddit": "ExperiencedDevs",
-          "enabled": true,
-          "sort": "top",
-          "time_filter": "day",
-          "fetch_limit": 30,
-          "min_score": 50
-        },
-        {
-          "subreddit": "startups",
-          "enabled": true,
-          "sort": "top",
-          "time_filter": "day",
-          "fetch_limit": 30,
-          "min_score": 50
-        },
-        {
-          "subreddit": "productmanagement",
-          "enabled": true,
-          "sort": "top",
-          "time_filter": "day",
-          "fetch_limit": 25,
-          "min_score": 30
-        },
-        {
-          "subreddit": "datascience",
-          "enabled": true,
-          "sort": "top",
-          "time_filter": "day",
-          "fetch_limit": 25,
-          "min_score": 30
-        },
-        {
-          "subreddit": "netsec",
-          "enabled": true,
-          "sort": "top",
-          "time_filter": "day",
-          "fetch_limit": 20,
-          "min_score": 80
-        }
+        {"subreddit": "MachineLearning", "enabled": true, "sort": "top", "time_filter": "day", "fetch_limit": 40, "min_score": 30},
+        {"subreddit": "LocalLLaMA", "enabled": true, "sort": "top", "time_filter": "day", "fetch_limit": 40, "min_score": 30},
+        {"subreddit": "ExperiencedDevs", "enabled": true, "sort": "top", "time_filter": "day", "fetch_limit": 30, "min_score": 50},
+        {"subreddit": "startups", "enabled": true, "sort": "top", "time_filter": "day", "fetch_limit": 30, "min_score": 50},
+        {"subreddit": "productmanagement", "enabled": true, "sort": "top", "time_filter": "day", "fetch_limit": 25, "min_score": 30},
+        {"subreddit": "datascience", "enabled": true, "sort": "top", "time_filter": "day", "fetch_limit": 25, "min_score": 30},
+        {"subreddit": "netsec", "enabled": true, "sort": "top", "time_filter": "day", "fetch_limit": 20, "min_score": 80}
       ],
       "users": [],
       "fetch_comments": 8
     },
-    "telegram": {
-      "enabled": false,
-      "channels": []
-    },
-    "twitter": {
-      "enabled": false,
-      "users": [],
-      "fetch_limit": 0,
-      "fetch_reply_text": false,
-      "max_replies_per_tweet": 0,
-      "max_tweets_to_expand": 0,
-      "reply_min_likes": 0
-    }
+    "telegram": {"enabled": false, "channels": []},
+    "twitter": {"enabled": false, "users": [], "fetch_limit": 0, "fetch_reply_text": false, "max_replies_per_tweet": 0, "max_tweets_to_expand": 0, "reply_min_likes": 0}
   },
   "filtering": {
     "ai_score_threshold": 7.0,
@@ -416,33 +102,8 @@
     "platform": "feishu",
     "layout": "collapsible",
     "fallback_layout": "markdown",
-    "languages": [
-      "zh"
-    ],
-    "request_body": {
-      "msg_type": "interactive",
-      "card": {
-        "schema": "2.0",
-        "config": {
-          "wide_screen_mode": true
-        },
-        "header": {
-          "title": {
-            "tag": "plain_text",
-            "content": "#{message_title}"
-          },
-          "template": "blue"
-        },
-        "body": {
-          "elements": [
-            {
-              "tag": "markdown",
-              "content": "#{summary}"
-            }
-          ]
-        }
-      }
-    },
+    "languages": ["zh"],
+    "request_body": {"msg_type": "interactive", "card": {"schema": "2.0", "config": {"wide_screen_mode": true}, "header": {"title": {"tag": "plain_text", "content": "#{message_title}"}, "template": "blue"}, "body": {"elements": [{"tag": "markdown", "content": "#{summary}"}]}}},
     "headers": ""
   }
 }
