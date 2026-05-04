@@ -1,0 +1,141 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+:root {
+  --horizon-bg: #f7f8fa;
+  --horizon-card: #ffffff;
+  --horizon-border: #e5e7eb;
+  --horizon-muted: #6b7280;
+  --horizon-text: #111827;
+  --horizon-link: #2563eb;
+  --horizon-soft: #eff6ff;
+}
+
+body {
+  background: var(--horizon-bg);
+}
+
+.page-header {
+  background: linear-gradient(135deg, #111827 0%, #1e3a8a 58%, #2563eb 100%);
+}
+
+.main-content {
+  max-width: 1040px;
+  color: var(--horizon-text);
+  font-size: 17px;
+  line-height: 1.75;
+}
+
+.main-content h1,
+.main-content h2,
+.main-content h3 {
+  color: #111827;
+  letter-spacing: -0.02em;
+}
+
+.main-content h1 {
+  margin-top: 1.5rem;
+}
+
+.main-content h2 {
+  margin-top: 2rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid var(--horizon-border);
+}
+
+.main-content a {
+  color: var(--horizon-link);
+}
+
+.horizon-dashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0 2rem;
+}
+
+.horizon-card {
+  background: var(--horizon-card);
+  border: 1px solid var(--horizon-border);
+  border-radius: 16px;
+  padding: 1.1rem 1.2rem;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+}
+
+.horizon-card h2 {
+  margin-top: 0;
+  border-bottom: none;
+  padding-bottom: 0;
+  font-size: 1.25rem;
+}
+
+.horizon-card p {
+  color: var(--horizon-muted);
+  font-size: 0.96rem;
+  margin-bottom: 0.9rem;
+}
+
+.post-list {
+  padding-left: 1.2rem;
+  margin: 0;
+}
+
+.post-list li {
+  margin: 0.55rem 0;
+}
+
+.post-list em {
+  color: var(--horizon-muted);
+}
+
+.main-content blockquote {
+  background: var(--horizon-soft);
+  border-left: 4px solid #2563eb;
+  color: #1f2937;
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
+}
+
+.main-content table {
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--horizon-card);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.main-content table th {
+  background: #f3f4f6;
+}
+
+.main-content code {
+  background: #f3f4f6;
+  border-radius: 6px;
+  padding: 0.12rem 0.35rem;
+}
+
+.main-content details {
+  background: #fafafa;
+  border: 1px solid var(--horizon-border);
+  border-radius: 10px;
+  padding: 0.65rem 0.8rem;
+  margin: 0.8rem 0;
+}
+
+.main-content summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+@media (max-width: 640px) {
+  .main-content {
+    font-size: 16px;
+  }
+
+  .horizon-card {
+    padding: 1rem;
+  }
+}
