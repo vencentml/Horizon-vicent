@@ -30,12 +30,6 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Install uv
-        uses: astral-sh/setup-uv@v3
-
-      - name: Install dependencies
-        run: uv sync
-
       - name: Resolve fetch window
         run: |
           if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ -n "${{ github.event.inputs.hours }}" ]; then
@@ -44,73 +38,15 @@ jobs:
             echo "HORIZON_HOURS=168" >> "$GITHUB_ENV"
           fi
 
-      - name: Use weekly Russia-Ukraine war config
-        run: cp data/config.ukraine-weekly.json data/config.json
-
-      - name: Validate weekly configuration
+      - name: Generate Russia-Ukraine war weekly summary
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          python - <<'PY'
-          import json
-          import os
-          from pathlib import Path
+          HORIZON_UKRAINE_WEEKLY_MODEL: deepseek-v4-flash
+          HORIZON_UKRAINE_WEEKLY_BASE_URL: https://api.deepseek.com
+        run: python scripts/ukraine_war_weekly.py --hours "$HORIZON_HOURS" --limit 30
 
-          config = json.loads(Path('data/config.json').read_text(encoding='utf-8'))
-          print('Config loaded: data/config.ukraine-weekly.json')
-          print('AI model:', config['ai'].get('model'))
-          print('Languages:', ', '.join(config['ai'].get('languages', ['en'])))
-          print('RSS sources:', ', '.join(item['name'] for item in config.get('sources', {}).get('rss', [])))
-          missing = [config['ai'].get('api_key_env')] if not os.environ.get(config['ai'].get('api_key_env', '')) else []
-          if missing:
-              raise SystemExit('Missing required environment variables: ' + ', '.join(missing))
-          print('Required environment variables are present.')
-          PY
-
-      - name: Run Horizon weekly Russia-Ukraine war summary
-        env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: uv run horizon --hours "$HORIZON_HOURS"
-
-      - name: Rename weekly posts
-        run: |
-          DATE=$(date +'%Y-%m-%d')
-          WEEK=$(date +'%G-W%V')
-          echo "DATE=$DATE" >> "$GITHUB_ENV"
-          echo "WEEK=$WEEK" >> "$GITHUB_ENV"
-
-          SRC="docs/_posts/${DATE}-summary-zh.md"
-          DEST="docs/_posts/${DATE}-ukraine-war-weekly-zh.md"
-
-          if [ ! -f "$SRC" ]; then
-            echo "Expected summary file not found: $SRC"
-            ls -la docs/_posts || true
-            exit 1
-          fi
-
-          mv "$SRC" "$DEST"
-          DATE="$DATE" WEEK="$WEEK" python - <<'PY'
-          import os
-          from pathlib import Path
-
-          date = os.environ['DATE']
-          week = os.environ['WEEK']
-          path = Path(f'docs/_posts/{date}-ukraine-war-weekly-zh.md')
-          text = path.read_text(encoding='utf-8')
-          text = text.replace(
-              f'title: "Horizon Summary: {date} (ZH)"',
-              f'title: "俄乌战争一周进展: {week}"',
-          )
-          text = text.replace(
-              f'date: {date}',
-              f'date: {date}\ncategory: ukraine-war-weekly\nperiod: {week}',
-          )
-          text = text.replace('> From ', f'> 俄乌战争周报（{week}）：从 ')
-          text = text.replace(' important content pieces were selected', ' 条重要进展被选入')
-          path.write_text(text, encoding='utf-8')
-          PY
+      - name: Set current week as environment variable
+        run: echo "WEEK=$(date +'%G-W%V')" >> "$GITHUB_ENV"
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
