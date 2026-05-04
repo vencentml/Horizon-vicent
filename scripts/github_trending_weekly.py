@@ -27,7 +27,6 @@ from typing import Iterable
 
 RSS_URL = "https://mshibanami.github.io/GitHubTrendingRSS/weekly/all.xml"
 GITHUB_SEARCH_URL = "https://api.github.com/search/repositories"
-OPENAI_COMPAT_CHAT_URL = "https://api.deepseek.com/chat/completions"
 DEFAULT_MODEL = "deepseek-v4-flash"
 
 
@@ -85,6 +84,32 @@ def _full_name_from_url(url: str) -> str:
     if len(parts) >= 2:
         return f"{parts[0]}/{parts[1]}"
     return ""
+
+
+def sample_items() -> list[RepoItem]:
+    return [
+        RepoItem(
+            name="example/agent-runtime",
+            url="https://github.com/example/agent-runtime",
+            description="A runtime for tool-using AI agents with sandboxed execution.",
+            language="Python",
+            stars=12345,
+            forks=678,
+            topics=["agents", "sandbox", "llm", "automation"],
+            homepage="https://example.com/agent-runtime",
+            source="sample data",
+        ),
+        RepoItem(
+            name="example/cuda-kernels",
+            url="https://github.com/example/cuda-kernels",
+            description="High-performance CUDA kernels for LLM inference and attention operators.",
+            language="CUDA",
+            stars=9876,
+            forks=432,
+            topics=["cuda", "llm", "inference", "gpu"],
+            source="sample data",
+        ),
+    ]
 
 
 def fetch_from_rss(limit: int) -> list[RepoItem]:
@@ -380,17 +405,21 @@ def main() -> int:
     parser.add_argument("--api-key-env", default="OPENAI_API_KEY")
     parser.add_argument("--ai-sleep-sec", type=float, default=0.0)
     parser.add_argument("--no-ai", action="store_true")
+    parser.add_argument("--sample", action="store_true", help="Use built-in sample data for offline CI/self-checks.")
     args = parser.parse_args()
 
-    rss_items = fetch_from_rss(args.limit)
-    search_items = []
-    if not rss_items:
-        search_items = fetch_from_github_search(args.hours, args.limit)
-
-    items = dedupe(rss_items or search_items)[: args.limit]
-    enrich_from_github_api(items)
-    print(f"Generated GitHub weekly report from {len(rss_items)} RSS items and {len(search_items)} search fallback items.")
-    print(f"Final item count: {len(items)}")
+    if args.sample:
+        items = sample_items()[: args.limit]
+        print(f"Using {len(items)} built-in sample GitHub items.")
+    else:
+        rss_items = fetch_from_rss(args.limit)
+        search_items = []
+        if not rss_items:
+            search_items = fetch_from_github_search(args.hours, args.limit)
+        items = dedupe(rss_items or search_items)[: args.limit]
+        enrich_from_github_api(items)
+        print(f"Generated GitHub weekly report from {len(rss_items)} RSS items and {len(search_items)} search fallback items.")
+        print(f"Final item count: {len(items)}")
 
     if args.no_ai:
         for item in items:
