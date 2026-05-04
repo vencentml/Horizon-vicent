@@ -8,9 +8,6 @@ stable front matter and expected Chinese sections.
 
 from __future__ import annotations
 
-import tempfile
-from pathlib import Path
-
 import github_trending_weekly as ghw
 import ukraine_war_weekly as uww
 
@@ -28,6 +25,7 @@ def check_github_weekly() -> None:
     assert_contains(md, "category: github-weekly", "GitHub weekly category")
     assert_contains(md, "GitHub 热门项目周报", "GitHub weekly title")
     assert_contains(md, "**它是什么**", "GitHub project explanation section")
+    assert_contains(md, "**解决什么问题**", "GitHub problem section")
     assert_contains(md, "**大致运行原理**", "GitHub mechanism section")
     assert_contains(md, "example/agent-runtime", "sample repository")
 
@@ -52,21 +50,9 @@ def check_ukraine_weekly() -> None:
     assert_contains(md, "## 原始来源列表", "source list section")
 
 
-def check_cli_sample_outputs() -> None:
-    with tempfile.TemporaryDirectory() as tmp:
-        out_dir = Path(tmp)
-        rc = ghw.main_with_args(["--sample", "--no-ai", "--output-dir", str(out_dir), "--limit", "2"])
-        if rc != 0:
-            raise AssertionError("github_trending_weekly sample CLI returned non-zero")
-        files = list(out_dir.glob("*-github-trending-weekly-zh.md"))
-        if len(files) != 1:
-            raise AssertionError(f"Expected one GitHub weekly output, got {files}")
-
-
 def main() -> int:
     check_github_weekly()
     check_ukraine_weekly()
-    # CLI sample check is optional at runtime, because it relies on main_with_args.
     print("Report generator self-checks passed.")
     return 0
 
