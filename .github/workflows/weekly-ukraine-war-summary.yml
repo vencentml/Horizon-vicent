@@ -1,0 +1,56 @@
+name: Weekly Russia-Ukraine War Summary
+
+on:
+  schedule:
+    # Run every Monday at 01:00 UTC / 09:00 Asia/Shanghai.
+    - cron: '0 1 * * 1'
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - 'scripts/generate_ukraine_war_weekly.py'
+      - '.github/workflows/weekly-ukraine-war-summary.yml'
+
+concurrency:
+  group: horizon-weekly-ukraine-war-summary
+  cancel-in-progress: false
+
+jobs:
+  weekly-ukraine-war-summary:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
+
+      - name: Install dependencies
+        run: uv sync
+
+      - name: Generate weekly Russia-Ukraine war summary
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: uv run python scripts/generate_ukraine_war_weekly.py
+
+      - name: Set current date as environment variable
+        run: echo "DATE=$(date +'%Y-%m-%d')" >> "$GITHUB_ENV"
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs
+          keep_files: true
+          commit_message: "📝 Weekly Ukraine War Summary: ${{ env.DATE }}"
+          publish_branch: gh-pages
+          enable_jekyll: true
