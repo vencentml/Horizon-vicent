@@ -1,0 +1,98 @@
+{
+  "version": "1.0",
+  "ai": {
+    "provider": "openai",
+    "model": "deepseek-v4-flash",
+    "base_url": "https://api.deepseek.com",
+    "api_key_env": "OPENAI_API_KEY",
+    "temperature": 0.2,
+    "max_tokens": 8192,
+    "languages": [
+      "zh"
+    ],
+    "throttle_sec": 0
+  },
+  "sources": {
+    "github": [],
+    "hackernews": {
+      "enabled": false,
+      "fetch_top_stories": 0,
+      "min_score": 0
+    },
+    "rss": [
+      {
+        "name": "ISW Ukraine Updates",
+        "url": "https://www.understandingwar.org/rss.xml",
+        "enabled": true,
+        "category": "ukraine-war-analysis"
+      },
+      {
+        "name": "Kyiv Independent",
+        "url": "https://kyivindependent.com/rss/",
+        "enabled": true,
+        "category": "ukraine-war-news"
+      },
+      {
+        "name": "War on the Rocks",
+        "url": "https://warontherocks.com/feed/",
+        "enabled": true,
+        "category": "military-analysis"
+      },
+      {
+        "name": "Defense One",
+        "url": "https://www.defenseone.com/rss/all/",
+        "enabled": true,
+        "category": "defense-news"
+      },
+      {
+        "name": "The Guardian Ukraine",
+        "url": "https://www.theguardian.com/world/ukraine/rss",
+        "enabled": true,
+        "category": "ukraine-war-news"
+      },
+      {
+        "name": "BBC Ukraine War",
+        "url": "https://feeds.bbci.co.uk/news/world/europe/rss.xml",
+        "enabled": true,
+        "category": "europe-news"
+      }
+    ],
+    "reddit": {
+      "enabled": false,
+      "subreddits": [],
+      "users": [],
+      "fetch_comments": 0
+    },
+    "telegram": {
+      "enabled": false,
+      "channels": []
+    },
+    "twitter": {
+      "enabled": false,
+      "users": [],
+      "fetch_limit": 0,
+      "fetch_reply_text": false,
+      "max_replies_per_tweet": 0,
+      "max_tweets_to_expand": 0,
+      "reply_min_likes": 0
+    }
+  },
+  "filtering": {
+    "ai_score_threshold": 5.5,
+    "time_window_hours": 168
+  },
+  "webhook": {
+    "enabled": false,
+    "url_env": "HORIZON_WEBHOOK_URL",
+    "delivery": "summary",
+    "overview_position": "first",
+    "platform": "generic",
+    "layout": "markdown",
+    "fallback_layout": "markdown",
+    "languages": [
+      "zh"
+    ],
+    "request_body": null,
+    "headers": ""
+  }
+}
