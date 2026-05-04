@@ -1,0 +1,13 @@
+{
+  "report": "ukraine-war-weekly",
+  "date": "2026-05-04",
+  "week_id": "2026-W19",
+  "items": 37,
+  "sources": {
+    "The Guardian Ukraine": 19,
+    "BBC Europe News": 11,
+    "War on the Rocks": 7
+  },
+  "output": "docs/_posts/2026-05-04-ukraine-war-weekly-2026-W19.md",
+  "status": "success"
+}
