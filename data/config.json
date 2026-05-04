@@ -38,8 +38,8 @@
     ],
     "hackernews": {
       "enabled": true,
-      "fetch_top_stories": 80,
-      "min_score": 80
+      "fetch_top_stories": 60,
+      "min_score": 120
     },
     "rss": [
       {"name": "Simon Willison", "url": "https://simonwillison.net/atom/everything/", "enabled": true, "category": "ai-coding-and-tools"},
