@@ -83,16 +83,15 @@ class HorizonOrchestrator:
             analyzed_items = await self._analyze_content(merged_items)
             self.console.print(f"🤖 Analyzed {len(analyzed_items)} items with AI\n")
 
-            # 5. Filter by score threshold
-            threshold = self.config.filtering.ai_score_threshold
+            # 5. Filter by global or category-specific score threshold
             important_items = [
                 item for item in analyzed_items
-                if item.ai_score and item.ai_score >= threshold
+                if item.ai_score is not None and item.ai_score >= self._threshold_for_item(item)
             ]
             important_items.sort(key=lambda x: x.ai_score or 0, reverse=True)
 
             self.console.print(
-                f"⭐️ {len(important_items)} items scored ≥ {threshold}\n"
+                f"⭐️ {len(important_items)} items passed configured thresholds\n"
             )
 
             # 5.5 Semantic deduplication: drop items covering the same topic
@@ -217,6 +216,19 @@ class HorizonOrchestrator:
             hours = self.config.filtering.time_window_hours
             since = datetime.now(timezone.utc) - timedelta(hours=hours)
         return since
+
+    def _threshold_for_item(self, item: ContentItem) -> float:
+        """Return the configured score threshold for an item.
+
+        RSS items carry their configured category in metadata["category"]. Future
+        source types can use the same metadata key to opt into category-specific
+        thresholds. Items without a matching category use the global threshold.
+        """
+        global_threshold = self.config.filtering.ai_score_threshold
+        category = item.metadata.get("category")
+        if not category:
+            return global_threshold
+        return self.config.filtering.category_thresholds.get(category, global_threshold)
 
     async def fetch_all_sources(self, since: datetime) -> List[ContentItem]:
         """Fetch content from all configured sources.
