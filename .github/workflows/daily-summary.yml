@@ -16,6 +16,8 @@ on:
     paths:
       - 'data/config.json'
       - 'data/config.example.json'
+      - 'src/**'
+      - 'tests/**'
       - '.github/workflows/daily-summary.yml'
 
 concurrency:
