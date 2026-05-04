@@ -91,7 +91,7 @@ jobs:
           fi
 
           mv "$SRC" "$DEST"
-          python - <<'PY'
+          DATE="$DATE" WEEK="$WEEK" python - <<'PY'
           import os
           from pathlib import Path
 
