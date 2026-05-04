@@ -92,7 +92,25 @@
   },
   "filtering": {
     "ai_score_threshold": 7.0,
-    "time_window_hours": 24
+    "time_window_hours": 24,
+    "category_thresholds": {
+      "paper-ai": 8.5,
+      "paper-ml": 8.5,
+      "paper-nlp": 8.5,
+      "paper-vision": 8.5,
+      "risk-health": 8.5,
+      "risk-conflict": 8.5,
+      "policy-regulation": 8.0,
+      "macro-rates": 8.0,
+      "macro-inflation": 8.0,
+      "macro-labor": 8.0,
+      "ai-research": 7.5,
+      "ai-engineering": 7.5,
+      "strategy": 7.5,
+      "venture": 7.5,
+      "economics": 7.5,
+      "ukraine-war": 8.0
+    }
   },
   "webhook": {
     "enabled": false,
