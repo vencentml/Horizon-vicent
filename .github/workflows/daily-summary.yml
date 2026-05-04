@@ -10,6 +10,13 @@ on:
         description: 'How many hours of content to fetch'
         required: false
         default: '24'
+  push:
+    branches:
+      - main
+    paths:
+      - 'data/config.json'
+      - 'data/config.example.json'
+      - '.github/workflows/daily-summary.yml'
 
 concurrency:
   group: horizon-daily-summary
