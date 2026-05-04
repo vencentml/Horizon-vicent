@@ -41,6 +41,9 @@ jobs:
       - name: Generate GitHub trending weekly summary
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          HORIZON_GITHUB_WEEKLY_MODEL: deepseek-v4-flash
+          HORIZON_GITHUB_WEEKLY_BASE_URL: https://api.deepseek.com
         run: python scripts/github_trending_weekly.py --hours "$HORIZON_HOURS" --limit 25
 
       - name: Set current week as environment variable
