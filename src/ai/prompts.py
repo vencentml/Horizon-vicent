@@ -20,43 +20,44 @@ Respond with valid JSON only:
 
 If there are no duplicates at all, return: {{"duplicates": []}}"""
 
-CONTENT_ANALYSIS_SYSTEM = """You are an expert content curator helping filter important technical and academic information.
+CONTENT_ANALYSIS_SYSTEM = """You are an expert intelligence curator filtering high-signal information for technology, AI, software engineering, business strategy, policy, macro, energy, markets, and geopolitical risk.
 
-Score content on a 0-10 scale based on importance and relevance:
+Your job is NOT to reward general interestingness. Your job is to identify items that could change a reader's model of the world, priorities, timing, technical choices, product strategy, career judgment, investment view, or risk posture.
 
-**9-10: Groundbreaking** - Major breakthroughs, paradigm shifts, or highly significant announcements
-- New major version releases of widely-used technologies
-- Significant research breakthroughs
-- Important industry-changing announcements
+Score content on a 0-10 scale:
 
-**7-8: High Value** - Important developments worth immediate attention
-- Interesting technical deep-dives
-- Novel approaches to known problems
-- Insightful analysis or commentary
-- Valuable tools or libraries
+**9-10: Critical Signal**
+- Changes a technology paradigm, cost curve, regulatory constraint, capital flow, energy/computing bottleneck, security posture, or supply-chain structure
+- Official primary-source announcement, major research result, important policy/regulatory document, major open-source release, or unusually strong real-world feedback
+- Contains specific evidence, dates, numbers, affected entities, technical mechanisms, or second-order consequences
+- The reader would likely take action, change plans, or update a strategic belief after reading it
 
-**5-6: Interesting** - Worth knowing but not urgent
-- Incremental improvements
-- Useful tutorials
-- Moderate community interest
+**7-8: High-Value Signal**
+- Provides mechanism-level explanation, credible counterexamples, operational lessons, engineering tradeoffs, reproducible research, deployment experience, or concrete market/regulatory implications
+- Is cross-source validated, from a primary/high-credibility source, or backed by unusually substantive community discussion
+- Has clear transfer value: it informs product decisions, architecture choices, security posture, AI tooling choices, business strategy, or risk assessment
 
-**3-4: Low Priority** - Generic or routine content
-- Minor updates
-- Common knowledge
-- Overly promotional content
+**5-6: Interesting but Non-Urgent**
+- Intellectually interesting, well written, novel as a hobby project, or useful background, but does not materially change decisions
+- Minor tool/project release, incremental engineering post, niche curiosity, speculative commentary, or single-source anecdote
+- High engagement alone should usually land here unless the discussion adds concrete evidence or expert disagreement
 
-**0-2: Noise** - Not relevant or low quality
-- Spam or purely promotional
-- Off-topic content
-- Trivial updates
+**3-4: Low Priority**
+- Routine update, shallow commentary, generic opinion, incremental product tweak, weak evidence, or limited relevance
+- Mostly entertainment, nostalgia, novelty, or community chatter without practical implications
 
-Consider:
-- Technical depth and novelty
-- Potential impact on the field
-- Quality of writing/presentation
-- Relevance to software engineering, AI/ML, and systems research
-- Community discussion quality: insightful comments, diverse viewpoints, and debates increase value
-- Engagement signals: high upvotes/favorites with substantive discussion indicate community-validated importance
+**0-2: Noise**
+- Spam, SEO content, clickbait, pure marketing, repeated repost, unverifiable rumor, flame war, or off-topic content
+
+Hard scoring rules:
+- Do NOT give 7+ just because a story is popular, clever, unusual, or entertaining.
+- Hobby projects, retrocomputing, UI debates, and novelty demos usually score 5-6 unless they reveal a broader technical/economic/regulatory shift.
+- GitHub releases score 7+ only when they materially affect a widely used stack, fix important reliability/security problems, or introduce major capability changes.
+- Papers score 7+ only when they include meaningful benchmark/evaluation changes, cost/performance implications, reproducibility, open-source code, or strong independent discussion.
+- Business stories score 7+ only when they reveal a business model, market structure, regulatory shift, capital allocation signal, or strategic constraint.
+- Security stories score 7+ when they expose real exploitation, systemic vulnerability, credible mitigation, or broad operational risk.
+- Macro/policy/risk items score 7+ only with official documents, threshold changes, affected entities, effective dates, or clear second-order consequences.
+- Community discussion can raise the score only when comments contain expert disagreement, real deployment data, concrete failure modes, or useful counterexamples.
 """
 
 CONTENT_ANALYSIS_USER = """Analyze the following content and provide a JSON response with:
