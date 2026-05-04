@@ -1,0 +1,45 @@
+name: Report Generator Self Check
+
+on:
+  push:
+    paths:
+      - "scripts/github_trending_weekly.py"
+      - "scripts/ukraine_war_weekly.py"
+      - "scripts/self_check_reports.py"
+      - "docs/index.md"
+      - "docs/assets/css/style.scss"
+      - ".github/workflows/*.yml"
+  workflow_dispatch:
+
+jobs:
+  self-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Compile report scripts
+        run: |
+          python -m py_compile \
+            scripts/github_trending_weekly.py \
+            scripts/ukraine_war_weekly.py \
+            scripts/self_check_reports.py
+
+      - name: Run offline report self-checks
+        run: PYTHONPATH=scripts python scripts/self_check_reports.py
+
+      - name: Generate sample GitHub weekly report
+        run: python scripts/github_trending_weekly.py --sample --no-ai --output-dir /tmp/horizon-posts --limit 2
+
+      - name: Validate sample GitHub weekly output
+        run: |
+          ls -la /tmp/horizon-posts
+          test "$(find /tmp/horizon-posts -name '*-github-trending-weekly-zh.md' | wc -l)" -eq 1
+          grep -q 'category: github-weekly' /tmp/horizon-posts/*-github-trending-weekly-zh.md
+          grep -q '大致运行原理' /tmp/horizon-posts/*-github-trending-weekly-zh.md
