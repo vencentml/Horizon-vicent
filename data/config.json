@@ -108,11 +108,41 @@
         "owner": "openai",
         "repo": "openai-agents-python",
         "enabled": true
+      },
+      {
+        "type": "repo_releases",
+        "owner": "pytorch",
+        "repo": "pytorch",
+        "enabled": true
+      },
+      {
+        "type": "repo_releases",
+        "owner": "langchain-ai",
+        "repo": "langchain",
+        "enabled": true
+      },
+      {
+        "type": "repo_releases",
+        "owner": "vercel",
+        "repo": "next.js",
+        "enabled": true
+      },
+      {
+        "type": "repo_releases",
+        "owner": "kubernetes",
+        "repo": "kubernetes",
+        "enabled": true
+      },
+      {
+        "type": "repo_releases",
+        "owner": "rust-lang",
+        "repo": "rust",
+        "enabled": true
       }
     ],
     "hackernews": {
       "enabled": true,
-      "fetch_top_stories": 50,
+      "fetch_top_stories": 80,
       "min_score": 80
     },
     "rss": [
@@ -169,6 +199,132 @@
         "url": "https://kyivindependent.com/rss/",
         "enabled": true,
         "category": "ukraine-war"
+      },
+      {
+        "name": "Google AI Blog",
+        "url": "https://blog.google/technology/ai/rss/",
+        "enabled": true,
+        "category": "ai-labs"
+      },
+      {
+        "name": "BAIR Blog",
+        "url": "https://bair.berkeley.edu/blog/feed.xml",
+        "enabled": true,
+        "category": "ai-research"
+      },
+      {
+        "name": "Hugging Face Blog",
+        "url": "https://huggingface.co/blog/feed.xml",
+        "enabled": true,
+        "category": "ai-engineering"
+      },
+      {
+        "name": "Lilian Weng",
+        "url": "https://lilianweng.github.io/index.xml",
+        "enabled": true,
+        "category": "ai-research"
+      },
+      {
+        "name": "arXiv cs.AI",
+        "url": "https://rss.arxiv.org/rss/cs.AI",
+        "enabled": true,
+        "category": "paper-ai"
+      },
+      {
+        "name": "arXiv cs.LG",
+        "url": "https://rss.arxiv.org/rss/cs.LG",
+        "enabled": true,
+        "category": "paper-ml"
+      },
+      {
+        "name": "arXiv cs.CL",
+        "url": "https://rss.arxiv.org/rss/cs.CL",
+        "enabled": true,
+        "category": "paper-nlp"
+      },
+      {
+        "name": "Netflix TechBlog",
+        "url": "https://netflixtechblog.com/feed",
+        "enabled": true,
+        "category": "engineering"
+      },
+      {
+        "name": "Cloudflare Blog",
+        "url": "https://blog.cloudflare.com/rss/",
+        "enabled": true,
+        "category": "infrastructure"
+      },
+      {
+        "name": "Stripe Engineering",
+        "url": "https://stripe.com/blog/engineering/rss",
+        "enabled": true,
+        "category": "engineering"
+      },
+      {
+        "name": "Uber Engineering",
+        "url": "https://www.uber.com/blog/engineering/rss/",
+        "enabled": true,
+        "category": "engineering"
+      },
+      {
+        "name": "Meta Engineering",
+        "url": "https://engineering.fb.com/feed/",
+        "enabled": true,
+        "category": "engineering"
+      },
+      {
+        "name": "GitHub Engineering",
+        "url": "https://github.blog/engineering/feed/",
+        "enabled": true,
+        "category": "developer-platform"
+      },
+      {
+        "name": "Shopify Engineering",
+        "url": "https://shopify.engineering/blog.atom",
+        "enabled": true,
+        "category": "engineering"
+      },
+      {
+        "name": "Stratechery",
+        "url": "https://stratechery.com/feed/",
+        "enabled": true,
+        "category": "strategy"
+      },
+      {
+        "name": "a16z",
+        "url": "https://a16z.com/feed/",
+        "enabled": true,
+        "category": "venture"
+      },
+      {
+        "name": "First Round Review",
+        "url": "https://review.firstround.com/feed.xml",
+        "enabled": true,
+        "category": "startup"
+      },
+      {
+        "name": "NFX",
+        "url": "https://www.nfx.com/rss",
+        "enabled": true,
+        "category": "startup"
+      },
+      {
+        "name": "Sequoia",
+        "url": "https://www.sequoiacap.com/feed/",
+        "enabled": true,
+        "category": "venture"
+      },
+      {
+        "name": "Marginal Revolution",
+        "url": "https://feeds.feedblitz.com/marginalrevolution/feed",
+        "enabled": true,
+        "category": "economics"
+      },
+      {
+        "name": "WHO Disease Outbreak News",
+        "url": "https://www.who.int/feeds/entity/csr/don/en/rss.xml",
+        "enabled": true,
+        "category": "risk-health"
       }
     ],
     "reddit": {
@@ -177,46 +333,62 @@
         {
           "subreddit": "MachineLearning",
           "enabled": true,
-          "sort": "hot",
+          "sort": "top",
           "time_filter": "day",
-          "fetch_limit": 20,
-          "min_score": 40
+          "fetch_limit": 40,
+          "min_score": 30
         },
         {
           "subreddit": "LocalLLaMA",
           "enabled": true,
-          "sort": "hot",
+          "sort": "top",
           "time_filter": "day",
-          "fetch_limit": 20,
-          "min_score": 40
-        },
-        {
-          "subreddit": "ArtificialInteligence",
-          "enabled": true,
-          "sort": "hot",
-          "time_filter": "day",
-          "fetch_limit": 15,
+          "fetch_limit": 40,
           "min_score": 30
         },
         {
-          "subreddit": "singularity",
+          "subreddit": "ExperiencedDevs",
           "enabled": true,
-          "sort": "hot",
+          "sort": "top",
           "time_filter": "day",
-          "fetch_limit": 15,
+          "fetch_limit": 30,
           "min_score": 50
+        },
+        {
+          "subreddit": "startups",
+          "enabled": true,
+          "sort": "top",
+          "time_filter": "day",
+          "fetch_limit": 30,
+          "min_score": 50
+        },
+        {
+          "subreddit": "productmanagement",
+          "enabled": true,
+          "sort": "top",
+          "time_filter": "day",
+          "fetch_limit": 25,
+          "min_score": 30
+        },
+        {
+          "subreddit": "datascience",
+          "enabled": true,
+          "sort": "top",
+          "time_filter": "day",
+          "fetch_limit": 25,
+          "min_score": 30
         },
         {
           "subreddit": "netsec",
           "enabled": true,
-          "sort": "hot",
+          "sort": "top",
           "time_filter": "day",
-          "fetch_limit": 10,
-          "min_score": 50
+          "fetch_limit": 20,
+          "min_score": 80
         }
       ],
       "users": [],
-      "fetch_comments": 5
+      "fetch_comments": 8
     },
     "telegram": {
       "enabled": false,
