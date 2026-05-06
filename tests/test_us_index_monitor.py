@@ -60,6 +60,6 @@ def test_build_metrics_and_alerts() -> None:
     alerts = build_alerts(config, metrics)
     types = {alert["type"] for alert in alerts}
     assert "spy_bear_drawdown" in types
-    assert "qqq_severe_drawdown" in types
+    assert "qqq_drawdown" in types
     assert "vix_stress" in types
     assert "qqq_above_max_weight_future_contributions_to_spy" in types
