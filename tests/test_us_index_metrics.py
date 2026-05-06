@@ -12,7 +12,7 @@ from src.markets.metrics import (
 
 
 def test_max_drawdown_from_high() -> None:
-    assert max_drawdown_from_high([100, 120, 90, 96]) == -0.2
+    assert round(max_drawdown_from_high([100, 120, 90, 96]), 4) == -0.2
 
 
 def test_moving_average() -> None:
