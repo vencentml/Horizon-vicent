@@ -1,0 +1,74 @@
+{
+  "version": "1.0",
+  "enabled": true,
+  "cadence": "weekly",
+  "symbols": {
+    "core": {
+      "SPY": {
+        "name": "SPDR S&P 500 ETF Trust",
+        "stooq_symbol": "spy.us",
+        "role": "S&P 500 proxy"
+      },
+      "QQQ": {
+        "name": "Invesco QQQ Trust",
+        "stooq_symbol": "qqq.us",
+        "role": "Nasdaq-100 proxy"
+      }
+    },
+    "breadth_proxies": {
+      "RSP": {
+        "name": "Invesco S&P 500 Equal Weight ETF",
+        "stooq_symbol": "rsp.us",
+        "role": "S&P 500 equal-weight proxy"
+      },
+      "QQEW": {
+        "name": "First Trust Nasdaq-100 Equal Weighted Index Fund",
+        "stooq_symbol": "qqew.us",
+        "role": "Nasdaq-100 equal-weight proxy"
+      }
+    },
+    "volatility": {
+      "VIX": {
+        "name": "CBOE Volatility Index",
+        "stooq_symbol": "^vix",
+        "role": "market stress proxy"
+      }
+    }
+  },
+  "fred_series": {
+    "DGS10": "US 10Y Treasury Yield",
+    "DFII10": "US 10Y Real Yield",
+    "FEDFUNDS": "Federal Funds Rate",
+    "CPIAUCSL": "CPI",
+    "CPILFESL": "Core CPI",
+    "UNRATE": "Unemployment Rate",
+    "BAMLH0A0HYM2": "High Yield Credit Spread"
+  },
+  "portfolio": {
+    "targets": {
+      "SPY": 0.8,
+      "QQQ": 0.2
+    },
+    "current": {
+      "SPY": 0.8,
+      "QQQ": 0.2,
+      "cash": 0.0
+    },
+    "rules": {
+      "rebalance_band": 0.05,
+      "max_qqq_weight": 0.3
+    }
+  },
+  "thresholds": {
+    "spy_drawdown_warning": -0.1,
+    "spy_drawdown_bear": -0.2,
+    "qqq_drawdown_warning": -0.2,
+    "qqq_drawdown_severe": -0.3,
+    "vix_warning": 20,
+    "vix_stress": 30,
+    "vix_extreme": 40,
+    "weekly_rate_change_bp": 25,
+    "relative_performance_alert": 0.05,
+    "volatility_ratio_alert": 1.5
+  }
+}
