@@ -9,55 +9,203 @@ lang: zh
 
 ---
 
-1. [SGLang v0.5.11 发布：默认启用 CUDA 13、推测解码 V2 及支持新模型](#item-1) ⭐️ 9.0/10
-2. [扎克伯格被指亲自授权 AI 版权侵权](#item-2) ⭐️ 9.0/10
-3. [Hugging Face Transformers v5.8.0 新增 DeepSeek-V4 等模型](#item-3) ⭐️ 8.0/10
-4. [AI 代理现可创建 Cloudflare 账户并购买域名](#item-4) ⭐️ 8.0/10
-5. [DNSSEC 配置错误导致 .de 域名中断](#item-5) ⭐️ 8.0/10
-6. [美光开始出货 245TB 数据中心固态硬盘](#item-6) ⭐️ 8.0/10
-7. [加州农民因德尔蒙破产将销毁 42 万棵桃树](#item-7) ⭐️ 8.0/10
-8. [GPT-5.x 在理论物理领域取得新成果](#item-8) ⭐️ 8.0/10
-9. [Hugging Face 为 ASR 排行榜添加私有数据](#item-9) ⭐️ 8.0/10
-10. [微软代理模式对比苹果芯片短缺](#item-10) ⭐️ 8.0/10
-11. [Ollama v0.23.1 添加 Gemma 4 MTP 推测解码支持](#item-11) ⭐️ 7.0/10
-12. [Langchain 0.3.29 修复反序列化和不受信任清单的安全漏洞](#item-12) ⭐️ 7.0/10
-13. [LangChain Core 0.3.85 修复 load() 安全漏洞](#item-13) ⭐️ 7.0/10
-14. [Langchain-Classic 1.0.6 修复反序列化和清单信任问题](#item-14) ⭐️ 7.0/10
-15. [计算机使用成本是结构化 API 的 45 倍](#item-15) ⭐️ 7.0/10
-16. [Airbyte 推出智能体，实现跨业务系统的统一数据访问](#item-16) ⭐️ 7.0/10
+1. [GPT-5.x 在理论物理学中推导出新结果](#item-1) ⭐️ 9.0/10
+2. [SGLang v0.5.11 发布，支持 CUDA 13 和推测解码 V2](#item-2) ⭐️ 8.0/10
+3. [Hugging Face Transformers v5.8.0 新增 DeepSeek-V4 支持](#item-3) ⭐️ 8.0/10
+4. [LangChain 0.3.29 修补反序列化漏洞](#item-4) ⭐️ 8.0/10
+5. [DNSSEC 错误导致 .de 域验证解析中断](#item-5) ⭐️ 8.0/10
+6. [Gemma 4 通过多令牌预测草稿模型加速推理](#item-6) ⭐️ 8.0/10
+7. [计算机使用智能体成本比结构化 API 高 45 倍](#item-7) ⭐️ 8.0/10
+8. [五角大楼被指压制《星条旗报》监察专员](#item-8) ⭐️ 8.0/10
+9. [扎克伯格被指控授权 Meta 侵犯版权](#item-9) ⭐️ 8.0/10
+10. [Hugging Face 为开放 ASR 排行榜添加私有数据以防止过拟合](#item-10) ⭐️ 8.0/10
+11. [微软与苹果财报：代理模式 vs 供应短缺](#item-11) ⭐️ 8.0/10
+12. [langchain-core 0.3.85 修复序列化注入漏洞](#item-12) ⭐️ 7.0/10
+13. [LangChain Classic 1.0.6 修复关键安全漏洞](#item-13) ⭐️ 7.0/10
+14. [Telus 使用 AI 实时修改呼叫中心客服口音](#item-14) ⭐️ 7.0/10
+15. [生物计算恐惧被 Doom 演示真相缓解](#item-15) ⭐️ 7.0/10
+16. [德尔蒙破产后加州农民将销毁 42 万棵桃树](#item-16) ⭐️ 7.0/10
 
 ---
 
 <a id="item-1"></a>
-## [SGLang v0.5.11 发布：默认启用 CUDA 13、推测解码 V2 及支持新模型](https://github.com/sgl-project/sglang/releases/tag/v0.5.11) ⭐️ 9.0/10
+## [GPT-5.x 在理论物理学中推导出新结果](https://www.latent.space/p/lupsasca) ⭐️ 9.0/10
 
-SGLang v0.5.11 升级至 CUDA 13.0 和 PyTorch 2.11，将推测解码 V2 设为默认，为预填充/解码分离增加了解码端基数缓存，并新增了对 Gemma 4、Qwen3.6 和 Kimi-K2.6 等模型的即日支持。 这些更改直接提升了 LLM 部署的推理性能和成本效率，尤其是默认的推测解码 V2 减少了 CPU 开销，以及解码端基数缓存恢复了分离部署中首个令牌生成时间的节省。CUDA 13 升级解锁了更新的 GPU 内核，并确保与最新 NVIDIA 硬件的兼容性。 推测解码 V2 采用重叠调度来隐藏 CPU 开销，现已成为 EAGLE/MTP/DFLASH 路径的默认选项。解码端基数缓存将前缀缓存扩展到预填充/解码分离下的解码节点，减少了长共享前缀的 TTFT。DFLASH 推测解码内核也已扩展到 AMD ROCm。
+OpenAI 的 GPT-5.x 在理论物理学和量子引力领域推导出了创新性结果，标志着 AI 驱动科学发现的重要进展。 这一突破证明了大型语言模型能够为基础物理学研究做出贡献，可能加速发现过程，并在某些理论计算上减少对人类研究人员的依赖。 这些结果是通过 GPT-5.x 实现的，这是 OpenAI GPT-5 模型的后续迭代版本，相关工作在 Latent Space 对 OpenAI 研究员 Alex Lupsasca 的采访中进行了描述。术语“Vibe Physics”已被用来描述 AI 独立进行物理学研究。
 
-github · Kangyan-Zhou · May 5, 21:28
+rss · Latent Space · May 5, 20:34
 
-**背景**: SGLang 是一个面向大型语言模型的开源推理引擎，旨在提供高性能和灵活性。CUDA 13.0 是 NVIDIA 工具包的一个重大版本，引入了新的开发工具和内核优化。推测解码是一种技术，通过一个小型草稿模型生成候选令牌，再由大型目标模型验证，从而降低延迟。预填充/解码分离将预填充和解码阶段分配到不同的 GPU 上，以优化吞吐量。
+**背景**: “Vibe Physics”这一概念源于物理学家 Matthew Schwartz 在一篇 Anthropic 博客文章中描述的实验，他监督 AI（Claude）完成研究计算，而无需直接处理文件。这种方法允许研究人员指导 AI 模型完成复杂的理论工作。GPT-5 于 2025 年 8 月发布，是一款多模态大型语言模型，具有最先进的性能，而 GPT-5.x 则代表了进一步的进步。
 
 <details><summary>参考链接</summary>
 <ul>
-<li><a href="https://docs.sglang.io/advanced_features/speculative_decoding.html">Speculative Decoding — SGLang</a></li>
-<li><a href="https://developer.nvidia.com/blog/whats-new-and-important-in-cuda-toolkit-13-0/">What’s New and Important in CUDA Toolkit 13.0 | NVIDIA ...</a></li>
-<li><a href="https://rocm.blogs.amd.com/software-tools-optimization/disaggregation/README.html">Unleashing AMD Instinct™ MI300X GPUs for LLM Serving: Disaggregating Prefill & Decode with SGLang</a></li>
+<li><a href="https://www.anthropic.com/research/vibe-physics">Vibe physics: The AI grad student</a></li>
+<li><a href="https://en.wikipedia.org/wiki/GPT-5">GPT-5</a></li>
+<li><a href="https://openai.com/index/introducing-gpt-5/">Introducing GPT-5 | OpenAI</a></li>
 
 </ul>
 </details>
 
-**标签**: `#AI inferencing`, `#open-source release`, `#performance`, `#LLM deployment`, `#CUDA`
+**标签**: `#AI`, `#physics`, `#scientific discovery`, `#OpenAI`, `#large language models`
 
 ---
 
 <a id="item-2"></a>
-## [扎克伯格被指亲自授权 AI 版权侵权](https://variety.com/2026/digital/news/meta-ai-mark-zuckerberg-copyright-infringement-lawsuit-publishers-scott-turow-1236738383/) ⭐️ 9.0/10
+## [SGLang v0.5.11 发布，支持 CUDA 13 和推测解码 V2](https://github.com/sgl-project/sglang/releases/tag/v0.5.11) ⭐️ 8.0/10
 
-新的指控称，Meta 首席执行官马克·扎克伯格亲自授权并鼓励为训练 AI 模型（包括 Llama）进行系统性版权侵权，这可能导致其承担个人责任。 此案可能开创先例，让高管为 AI 训练数据行为承担个人责任，从而重塑公司获取数据和遵守版权法的方式。 这些指控紧随此前 Anthropic 因类似侵权以 15 亿美元和解的案件，法定赔偿金可能高达每件盗用作品数百万美元。
+SGLang v0.5.11 升级至 CUDA 13 和 PyTorch 2.11，默认启用推测解码 V2，并为分离式服务添加了解码端基数缓存。同时还支持了 Gemma 4 和 Qwen3.6 等新模型。 此版本大幅现代化了构建矩阵，并通过默认的推测解码 V2 提升了推理效率。新的解码端基数缓存增强了分离式部署的性能，有利于生产级的 LLM 服务。 默认 CUDA 版本在 SGLang、sgl-kernel 和 Docker 镜像中统一升级至 13.0。推测解码 V2 通过重叠调度隐藏 CPU 开销，解码端基数缓存恢复了预填充/解码分离式服务中的缓存命中率。
+
+github · Kangyan-Zhou · May 5, 21:28
+
+**背景**: SGLang 是一个专为大型语言模型设计的高速推理引擎。推测解码是一种利用草稿模型每步生成多个令牌的技术，可降低延迟。预填充-解码分离将提示处理与令牌生成阶段分开，以优化资源使用。
+
+<details><summary>参考链接</summary>
+<ul>
+<li><a href="https://www.lmsys.org/blog/2024-12-04-sglang-v0-4/">SGLang v0.4: Zero-Overhead Batch Scheduler, Cache-Aware Load Balancer, Faster Structured Outputs - LMSYS Blog | LMSYS Org</a></li>
+<li><a href="https://docs.ray.io/en/latest/serve/llm/architecture/serving-patterns/prefill-decode.html">Prefill-decode disaggregation — Ray 2.54.1</a></li>
+
+</ul>
+</details>
+
+**标签**: `#release`, `#inference engine`, `#LLM`, `#CUDA`, `#speculative decoding`
+
+---
+
+<a id="item-3"></a>
+## [Hugging Face Transformers v5.8.0 新增 DeepSeek-V4 支持](https://github.com/huggingface/transformers/releases/tag/v5.8.0) ⭐️ 8.0/10
+
+Hugging Face Transformers v5.8.0 发布，新增对 DeepSeek-V4 的支持。DeepSeek-V4 是一款新的混合专家（MoE）语言模型，采用了混合注意力、流形约束超连接和基于哈希的专家路由。 DeepSeek-V4 引入的架构创新有望显著提升大语言模型的效率和长上下文处理能力。将其集成到 Transformers 库中，使研究者和从业者能够轻松使用。 DeepSeek-V4 将多头潜在注意力替换为混合局部和长程注意力设计，用流形约束超连接（mHC）替代残差连接，并在早期 MoE 层使用静态 token-id 到 expert-id 的哈希表。该版本涵盖 Flash、Pro 和 Base 变体。
+
+github · vasqu · May 5, 16:52
+
+**背景**: 混合专家（MoE）模型使用多个专门的子网络（专家）处理不同 token，从而在不显著增加计算成本的情况下扩大模型容量。DeepSeek-V4 是 DeepSeek-V3 的后续版本，重点改进了注意力和路由机制。
+
+<details><summary>参考链接</summary>
+<ul>
+<li><a href="https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro">deepseek-ai/DeepSeek-V4-Pro · Hugging Face</a></li>
+<li><a href="https://developer.nvidia.com/blog/build-with-deepseek-v4-using-nvidia-blackwell-and-gpu-accelerated-endpoints/">Build with DeepSeek V4 Using NVIDIA Blackwell and GPU-Accelerated Endpoints | NVIDIA Technical Blog</a></li>
+<li><a href="https://arxiv.org/abs/2512.24880">[2512.24880] mHC: Manifold-Constrained Hyper-Connections</a></li>
+
+</ul>
+</details>
+
+**标签**: `#transformers`, `#deepseek-v4`, `#llm`, `#open-source`, `#MoE`
+
+---
+
+<a id="item-4"></a>
+## [LangChain 0.3.29 修补反序列化漏洞](https://github.com/langchain-ai/langchain/releases/tag/langchain%3D%3D0.3.29) ⭐️ 8.0/10
+
+LangChain 发布了 0.3.29 版本，修复了存储模块和 load() 函数中的反序列化漏洞，防止来自不可信清单的潜在代码执行。 此更新对 LangChain 用户至关重要，因为它解决了序列化注入漏洞（CVE-2025-68664），攻击者可利用不可信数据执行任意代码或窃取机密。它增强了使用 LangChain 序列化和缓存功能的应用程序的安全性。 该补丁限制了 langchain.storage._lc_store 中的反序列化操作，并增强了 load() 函数以抵御不可信清单，从而降低恶意构造的序列化数据带来的风险。这些漏洞此前于 2025 年 12 月披露，影响了 InMemoryVectorStore.load() 和 hub.pull 等组件。
+
+github · github-actions[bot] · May 5, 21:02
+
+**背景**: LangChain 是一个流行的 Python 框架，用于构建基于大型语言模型（LLM）的应用程序。反序列化漏洞是当从不安全的序列化格式（如 JSON）重建数据时发生的，攻击者可能注入恶意对象。CVE-2025-68664 漏洞利用了 LangChain 的 dumps() 和 dumpd() 函数未能正确转义包含保留键 'lc' 的字典，从而在反序列化过程中注入任意对象。
+
+<details><summary>参考链接</summary>
+<ul>
+<li><a href="https://www.upwind.io/feed/cve-2025-68664-langchain-serialization-injection">CVE-2025-68664: LangChain Serialization Injection in dumps() and load()</a></li>
+<li><a href="https://cyata.ai/blog/langgrinch-langchain-core-cve-2025-68664/">All I Want for Christmas is Your Secrets: LangGrinch hits LangChain Core (CVE-2025-68664) - Cyata | The Control Plane for Agentic Identity</a></li>
+
+</ul>
+</details>
+
+**标签**: `#security`, `#langchain`, `#python`, `#ai-tooling`
+
+---
+
+<a id="item-5"></a>
+## [DNSSEC 错误导致 .de 域验证解析中断](https://status.denic.de/pages/incident/592577eab611ce1e0d00046f/69fa60ef9d12f5057a974f38) ⭐️ 8.0/10
+
+在某个日期，DENIC 发布了一条格式错误的 RRSIG 记录，导致所有验证解析器对 .de 域返回 SERVFAIL。DENIC 采取纠正措施后问题已解决。 此事件凸显了 DNSSEC 的运营风险，一个配置错误即可导致整个 TLD 的 DNS 解析故障。这影响了数百万依赖验证解析器（如 1.1.1.1 和 Google Public DNS）的 .de 域用户。 格式错误的 RRSIG 覆盖了一条 NSEC3 记录，且无法通过 ZSK 密钥标签 33834 验证。Cloudflare 临时在其 1.1.1.1 解析器上禁用了 DNSSEC 验证以减轻影响。
+
+hackernews · warpspin · May 5, 20:16
+
+**背景**: DNSSEC（域名系统安全扩展）为 DNS 记录添加加密签名，以确保数据的真实性和完整性。验证解析器会检查这些签名并拒绝无效响应。DENIC 是 .de 顶级域的注册管理机构，负责其 DNS 基础设施。
+
+<details><summary>参考链接</summary>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/DNSSEC">DNSSEC</a></li>
+<li><a href="https://en.wikipedia.org/wiki/DENIC">DENIC</a></li>
+<li><a href="https://www.cloudflare.com/learning/dns/dnssec/how-dnssec-works/">How Does DNSSEC Work? | Cloudflare</a></li>
+
+</ul>
+</details>
+
+**社区讨论**: 社区成员迅速确认根本原因是 DNSSEC 签名错误，详细技术分析指出了涉及的算法和密钥标签。有人幽默地提到 DENIC 内部派对的时机，而 Cloudflare 确认其 1.1.1.1 解析器禁用了验证作为临时解决方案。
+
+**标签**: `#DNSSEC`, `#DNS`, `#outage`, `#.de`, `#network security`
+
+---
+
+<a id="item-6"></a>
+## [Gemma 4 通过多令牌预测草稿模型加速推理](https://blog.google/innovation-and-ai/technology/developers-tools/multi-token-prediction-gemma-4/) ⭐️ 8.0/10
+
+Google 为 Gemma 4 模型系列发布了多令牌预测（MTP）草稿模型，通过让一个较小的草稿模型提出多个令牌，并由目标模型并行验证，从而在不降低输出质量的前提下实现更快的推理。 这项技术显著降低了部署大型语言模型的推理延迟和成本，使 Gemma 4 更适合实时应用和边缘部署，并巩固了 Google 在开放权重模型生态系统中的地位。 MTP 草稿模型旨在与主 Gemma 4 目标模型配合使用，相比标准自回归解码可实现 2–3 倍的加速，同时保持目标模型的精确输出分布。
+
+hackernews · amrrs · May 5, 16:14
+
+**背景**: 投机解码是一种推理优化技术：一个小型草稿模型生成候选令牌，大型目标模型通过一次前向传播验证它们，从而确保无质量损失。多令牌预测草稿模型扩展了这一概念，让草稿模型一次性预测多个令牌。Gemma 是 Google DeepMind 基于与 Gemini 相同技术开发的开放权重大型语言模型系列。
+
+<details><summary>参考链接</summary>
+<ul>
+<li><a href="https://blog.google/innovation-and-ai/technology/developers-tools/multi-token-prediction-gemma-4/">Accelerating Gemma 4: faster inference with multi-token prediction drafters</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Speculative_decoding">Speculative decoding</a></li>
+
+</ul>
+</details>
+
+**社区讨论**: 评论者称赞投机解码是一种巧妙且近乎神奇的技术，能在不降低质量的情况下加速推理。他们指出，与 Qwen 等竞争对手相比，Gemma 模型每次输出使用的令牌更少，并讨论了正在进行的将 MTP 支持添加到 llama.cpp 以实现本地部署的工作，同时也强调了同时运行目标模型和草稿模型对 VRAM 需求的增加。
+
+**标签**: `#AI inference`, `#speculative decoding`, `#Gemma`, `#open-source models`
+
+---
+
+<a id="item-7"></a>
+## [计算机使用智能体成本比结构化 API 高 45 倍](https://reflex.dev/blog/computer-use-is-45x-more-expensive-than-structured-apis/) ⭐️ 8.0/10
+
+一项详细的成本分析显示，计算机使用视觉智能体的成本约为等效结构化 API 调用的 45 倍，这对它们在许多用例中的经济可行性提出了质疑。 这种成本差异迫使开发人员重新考虑何时使用基于视觉的智能体与结构化 API，可能推动 AI 自动化实践转向更高效的 API 优先方法。 该分析考虑了令牌消耗、延迟和错误率，显示基于视觉的交互比直接 API 调用需要更多计算资源。45 倍的倍数表明计算机使用应保留给 API 不切实际的场景，如遗留系统或没有可编程接口的应用程序。
+
+hackernews · palashawas · May 5, 16:34
+
+**背景**: 计算机使用智能体是能够感知屏幕元素并执行点击、打字等操作的 AI 系统，模拟人与软件的交互。结构化 API 提供对应用程序功能的编程访问，开销极小。两者之间的选择涉及灵活性、兼容性和效率之间的权衡。
+
+<details><summary>参考链接</summary>
+<ul>
+<li><a href="https://www.askui.com/blog-posts/getting-started-vision-agents">Getting Started: Computer-Use Agents with the AskUI Python SDK | AskUI Blog</a></li>
+
+</ul>
+</details>
+
+**社区讨论**: 社区评论探讨了让智能体更难以进行网页抓取的方法，例如随机化 UI 元素，并提出了使用辅助功能 API 等替代方案。一些人认为，计算机使用应是没有 API 可用时的最后手段。
+
+**标签**: `#cost analysis`, `#AI agents`, `#APIs`, `#computer use`
+
+---
+
+<a id="item-8"></a>
+## [五角大楼被指压制《星条旗报》监察专员](https://www.stripes.com/opinion/2026-04-23/stripes-former-ombudsman-pentagon-trying-to-silence-21465037.html) ⭐️ 8.0/10
+
+据称，五角大楼正试图压制《星条旗报》的监察专员，威胁到该军事报纸受国会授权的编辑独立性。 这威胁到美国军方的新闻自由，可能损害军人获取无过滤新闻的权利，影响军民关系。 监察专员职位成立于 1991 年，此前国会针对伊朗门事件期间压制不利新闻的情况，强制要求《星条旗报》保持编辑独立性。
+
+hackernews · petethomas · May 6, 03:24
+
+**背景**: 《星条旗报》是一份自内战以来为美军服务的军事报纸。1980 年代末，因军方试图压制伊朗门事件新闻，国会强制要求其编辑独立。1991 年设立监察专员一职，负责监督并报告该报的编辑自由。
+
+**社区讨论**: 评论强调监察专员在伊朗门时期设立的历史背景，并与近期其他监察专员被解职（如移民拘留监察专员）相类比。一些人表达对监察专员的支持，认为这是新闻自由问题。
+
+**标签**: `#military journalism`, `#press freedom`, `#Pentagon`, `#ombudsman`, `#Stars and Stripes`
+
+---
+
+<a id="item-9"></a>
+## [扎克伯格被指控授权 Meta 侵犯版权](https://variety.com/2026/digital/news/meta-ai-mark-zuckerberg-copyright-infringement-lawsuit-publishers-scott-turow-1236738383/) ⭐️ 8.0/10
+
+一场新的诉讼指控 Meta 首席执行官马克·扎克伯格亲自授权盗用数百万本受版权保护的书籍，用于训练公司的 Llama AI 模型，这与 Meta 此前声称数据合法获取的说法直接矛盾。 此案可能为 AI 训练数据侵权中的高管个人责任树立先例，有可能使高层管理者面临个人赔偿责任，并重塑科技公司获取训练数据的方式。 诉讼引用了一起先前的案例，其中 Anthropic 因类似盗版行为支付了 15 亿美元和解金，并指出 Meta 据称无视 robots.txt 协议并激进抓取内容。每项侵权的法定最低赔偿金可能为 750 美元。
 
 hackernews · spankibalt · May 5, 18:04
 
-**背景**: AI 公司经常从网络抓取受版权保护的材料来训练大型语言模型（如 Meta 的 Llama）。版权持有者认为这是侵权，而一些 AI 公司则声称这属于变革性合理使用。这起诉讼的结果可能澄清在 AI 训练中使用版权作品的合法性。
+**背景**: 像 Meta 的 Llama 这样的大型语言模型需要海量数据集进行训练。在 AI 行业，从互联网抓取数据很常见，但未经许可使用受版权保护的作品可能构成侵权。合理使用原则是核心争议点，一些法院判定训练行为具有转化性，但盗用作品本身的行为仍然违法。
 
 <details><summary>参考链接</summary>
 <ul>
@@ -66,321 +214,165 @@ hackernews · spankibalt · May 5, 18:04
 </ul>
 </details>
 
-**社区讨论**: 评论者意见分歧：一些人支持 AI 训练的合理使用，而另一些人则欢迎扎克伯格可能承担个人责任，并引用先前的和解案例及 Meta 无视 robots.txt 的行为。
+**社区讨论**: 评论意见不一：一些人希望此案导致扎克伯格的个人责任，而另一些人则认为 AI 训练属于合理使用。一位用户报告称 Meta 无视 robots.txt 并激进抓取其个人服务器。总体情绪似乎对 Meta 的做法持批评态度。
 
-**标签**: `#AI`, `#copyright`, `#Meta`, `#regulation`, `#legal`
-
----
-
-<a id="item-3"></a>
-## [Hugging Face Transformers v5.8.0 新增 DeepSeek-V4 等模型](https://github.com/huggingface/transformers/releases/tag/v5.8.0) ⭐️ 8.0/10
-
-Hugging Face Transformers v5.8.0 新增了对 DeepSeek-V4 的支持，这是一个具有架构创新的下一代混合专家语言模型，同时还增加了 Gemma 4 Assistant、GraniteSpeechPlus、Granite4Vision 和 EXAONE-4.5 等模型。 此次发布让机器学习从业者能够轻松访问和实验像 DeepSeek-V4 这样的前沿模型架构，该架构引入了混合注意力、流形约束超连接和静态 token-ID 路由。这降低了在研究和生产中使用先进 MoE 模型的门槛。 DeepSeek-V4 将多头潜注意力（MLA）替换为混合局部+长程注意力设计，将残差连接替换为流形约束超连接（mHC），并使用静态 token-ID 到 expert-ID 哈希表引导前几层 MoE 层。该实现涵盖了不同规模的 Flash、Pro 和 Base 变体。
-
-github · vasqu · May 5, 16:52
-
-**背景**: 混合专家（MoE）是一种神经网络架构，它将模型划分为多个“专家”子网络，并使用路由器为每个输入仅激活一部分专家，从而提高效率。DeepSeek-V4 在之前的 DeepSeek 模型基础上进行了创新，例如 mHC 将残差连接投影到流形上以保持恒等映射，以及使用静态哈希表进行 token 路由，减少了推理期间的计算开销。
-
-<details><summary>参考链接</summary>
-<ul>
-<li><a href="https://planetbanatt.net/articles/mla.html">Understanding Multi-Head Latent Attention</a></li>
-<li><a href="https://arxiv.org/abs/2512.24880">[2512.24880] mHC: Manifold-Constrained Hyper-Connections</a></li>
-<li><a href="https://medium.com/@sampan090611/deepseek-mhc-explained-how-manifold-constrained-hyper-connections-redefine-residual-connections-in-2902b6cdaea3">DeepSeek mHC Explained: How Manifold-Constrained Hyper ...</a></li>
-
-</ul>
-</details>
-
-**标签**: `#transformers`, `#deepseek`, `#moe`, `#llm`
-
----
-
-<a id="item-4"></a>
-## [AI 代理现可创建 Cloudflare 账户并购买域名](https://blog.cloudflare.com/agents-stripe-projects/) ⭐️ 8.0/10
-
-Cloudflare 与 Stripe 联合设计了一种协议，允许 AI 代理自主创建 Cloudflare 账户、购买域名并部署项目，无需人工干预。 此能力可能彻底改变工作流自动化，使代理能够处理真实世界交易，但也引发了严重的欺诈担忧，因为代理可以冒充用户通过身份验证流程。 该协议是 Stripe Projects 计划的一部分，与 Cloudflare Agents SDK 配合使用，后者为有状态代理提供持久化内存和实时 WebSocket 连接。
-
-hackernews · rolph · May 6, 03:10
-
-**背景**: AI 代理是自主执行任务的软件程序。Cloudflare 提供边缘计算和安全服务，Stripe Atlas 帮助在线注册公司。这一集成使代理能够顺序执行账户创建、域名购买和部署等之前需要人工交互的操作。
-
-<details><summary>参考链接</summary>
-<ul>
-<li><a href="https://sesamedisk.com/cloudflare-agents-automate-cloud-deployment/">Cloudflare Agents Now Automate Account Creation, Domain ...</a></li>
-<li><a href="https://developers.cloudflare.com/agents/">Agents - Cloudflare Docs</a></li>
-
-</ul>
-</details>
-
-**社区讨论**: 评论者表达了讽刺：Cloudflare 严格的人类验证被代理绕过；担忧大规模欺诈；对实际用例表示怀疑，有人将其比作“浣熊学会了打开冰柜”。
-
-**标签**: `#AI agents`, `#Cloudflare`, `#automation`, `#fraud`, `#domain registration`
-
----
-
-<a id="item-5"></a>
-## [DNSSEC 配置错误导致 .de 域名中断](https://status.denic.de/pages/incident/592577eab611ce1e0d00046f/69fa60ef9d12f5057a974f38) ⭐️ 8.0/10
-
-2025 年 2 月 5 日，德国.de 域名注册管理机构 DENIC 的 DNSSEC 配置错误导致所有.de 域名的验证解析器持续数小时失效。Cloudflare 暂时禁用了其 1.1.1.1 解析器上的 DNSSEC 验证。 此次事件展示了 DNSSEC 在顶级域名层面的脆弱性，影响了数百万 .de 域名，并凸显了单一配置错误可能在整个互联网上引发连锁反应的系统性风险。 根本原因是一个与密钥标签 33834 的区签名密钥(ZSK)不匹配的 NSEC3 记录上的无效 RRSIG，导致仅执行 DNSSEC 验证的解析器返回 SERVFAIL 错误。未启用验证的解析器正常工作。
-
-hackernews · warpspin · May 5, 20:16
-
-**背景**: DNSSEC（DNS 安全扩展）向 DNS 记录添加加密签名以确保真实性和完整性。DENIC eG 是管理德国国家顶级域名 .de 的合作注册管理机构。当 DNSSEC 验证失败时，验证解析器拒绝返回查询结果，导致用户收到 SERVFAIL 错误。
-
-<details><summary>参考链接</summary>
-<ul>
-<li><a href="https://www.cloudflare.com/learning/dns/dnssec/how-dnssec-works/">How does DNSSEC work? - Cloudflare</a></li>
-<li><a href="https://en.wikipedia.org/wiki/DENIC">DENIC - Wikipedia</a></li>
-
-</ul>
-</details>
-
-**社区讨论**: Hacker News 社区迅速识别出这是一个 DNSSEC 配置错误，用户指出了具体的 RRSIG 密钥标签不匹配。一些评论者开玩笑说 DENIC 团队在派对上，而另一些人则指出 Cloudflare 已禁用 1.1.1.1 上的 DNSSEC 验证。一位用户注意到缺少了常见的 tptacek DNSSEC 批评。
-
-**标签**: `#DNSSEC`, `#DNS`, `#outage`, `#.de`, `#security`
-
----
-
-<a id="item-6"></a>
-## [美光开始出货 245TB 数据中心固态硬盘](https://investors.micron.com/news-releases/news-release-details/industry-leading-245tb-micron-6600-ion-data-center-ssd-now) ⭐️ 8.0/10
-
-美光已开始出货 6600 ION 固态硬盘，这是业界容量最大的数据中心驱动器，达到 245TB，面向 AI 和超大规模工作负载。 该驱动器可在单个 2.5 英寸外形中提供四分之一 PB 的容量，相比 HDD 大幅降低功耗、冷却和物理占用，可能重塑数据中心存储经济。 6600 ION 采用 PCIe 5.0 接口，顺序读取速度高达 13,700 MB/s，但写入速度仅为 2,700 MB/s，提供 U.2 和 E3.L 两种外形规格。
-
-hackernews · neilfrndes · May 6, 03:37
-
-**背景**: 数据中心越来越依赖固态硬盘来获得比 HDD 更快的数据访问。像 6600 ION 这样的高容量固态硬盘旨在取代数十个 HDD，从而降低功耗和空间占用。然而，由于紧密封装了大量 NAND 芯片，此类高密度固态硬盘常面临散热和写入性能方面的挑战。
-
-<details><summary>参考链接</summary>
-<ul>
-<li><a href="https://investors.micron.com/news-releases/news-release-details/industry-leading-245tb-micron-6600-ion-data-center-ssd-now">Industry-Leading 245TB Micron 6600 ION Data Center SSD Now ...</a></li>
-<li><a href="https://hothardware.com/news/micron-ships-245tb-ssd-ai-data-center-storage-demands-surge">Micron Ships Massive 245TB SSD as AI Data Center Storage ...</a></li>
-<li><a href="https://wccftech.com/micron-6600-ion-ssd-the-worlds-highest-storage-capacity-245-tb/">Micron's New 245 TB SSD Crushes HDDs With 84x Better Energy ...</a></li>
-
-</ul>
-</details>
-
-**社区讨论**: 社区评论褒贬不一：一些人称赞容量里程碑，另一些人批评其顺序写入性能差（2,700 MB/s）并对散热表示担忧。此外，也有对消费级固态硬盘未见类似容量增长感到失望的声音。
-
-**标签**: `#SSD`, `#data center`, `#storage`, `#Micron`, `#capacity`
-
----
-
-<a id="item-7"></a>
-## [加州农民因德尔蒙破产将销毁 42 万棵桃树](https://www.sfgate.com/centralcoast/article/usda-aid-california-farmers-22240694.php) ⭐️ 8.0/10
-
-由于德尔蒙（Del Monte）破产终止了罐装业务，加州农民将销毁 42 万棵粘核桃树，因为作物已无买家。 这一事件凸显了当单一大型买家倒闭时农业供应链的脆弱性，并强调了依赖工业加工的单一作物种植的经济风险。 这些树是粘核桃，专为罐装而培育，不适合鲜销。农民可能会改种其他作物，但重建生产需要数年时间。
-
-hackernews · littlexsparkee · May 5, 18:13
-
-**背景**: 粘核桃的果肉紧粘着果核，非常适合罐装，但鲜食价值较低。德尔蒙是加州最后几家大型罐装厂之一。其破产导致农民失去加工渠道，被迫移除果树。
-
-<details><summary>参考链接</summary>
-<ul>
-<li><a href="https://www.epicgardening.com/freestone-clingstone-peach-difference/">What’s the Difference Between Freestone and Clingstone Peaches?</a></li>
-<li><a href="https://www.cookist.com/what-are-clingstone-peaches-the-delicious-southern-fruit-to-brighten-up-your-cooking/">What Are Clingstone Peaches, The Delicious Southern Fruit To ...</a></li>
-<li><a href="https://www.thekitchn.com/whats-the-difference-between-freestone-and-clingstone-peaches-246304">Freestone Peaches vs. Clingstone: What’s the Difference?</a></li>
-
-</ul>
-</details>
-
-**社区讨论**: 评论者强调了运输农产品的物流困难，指出即使免费赠送也因运输成本而不可行。有人归咎于单一作物体系和消费者远离罐装桃子的趋势，另一些人则指出这些树专为罐装培育。
-
-**标签**: `#agriculture`, `#supply chain`, `#bankruptcy`, `#economic impact`, `#food industry`
-
----
-
-<a id="item-8"></a>
-## [GPT-5.x 在理论物理领域取得新成果](https://www.latent.space/p/lupsasca) ⭐️ 8.0/10
-
-OpenAI 研究员 Alex Lupsasca 透露，GPT-5.x 自主推导出理论物理和量子引力领域的新成果，这标志着人工智能驱动科学发现的潜在突破。 如果得到证实，这可能彻底改变科学研究的方式，使人工智能能够生成和验证基础物理学中的假说。同时，这也引发了关于人工智能生成发现的可信度与验证问题的讨论。 这些说法是在 Latent Space 播客上提出的，尚未经过同行评审或发表。GPT-5.x 使用的具体结果和方法仍未公开。
-
-rss · Latent Space · May 5, 20:34
-
-**背景**: 大型语言模型的最新进展显示出科学发现的潜力，但术语 'vibe physics' 被批评性地用来描述缺乏严谨性的人工智能生成的物理学内容。Alex Lupsasca 的讨论表明，GPT-5.x 可能超越模式匹配，产生真正的新见解。然而，由于缺乏已发表的证据，仍存在怀疑。
-
-<details><summary>参考链接</summary>
-<ul>
-<li><a href="https://www.anthropic.com/research/vibe-physics">Vibe physics: The AI grad student \ Anthropic</a></li>
-<li><a href="https://bigthink.com/starts-with-a-bang/vibe-physics-ai-slop/">Why “vibe physics” is the ultimate example of AI slop</a></li>
-
-</ul>
-</details>
-
-**标签**: `#AI`, `#physics`, `#scientific discovery`, `#OpenAI`, `#quantum gravity`
-
----
-
-<a id="item-9"></a>
-## [Hugging Face 为 ASR 排行榜添加私有数据](https://huggingface.co/blog/open-asr-leaderboard-private-data) ⭐️ 8.0/10
-
-Hugging Face 已将来自 Appen Inc. 和 DataoceanAI 的私有高质量英语 ASR 数据集引入开放式 ASR 排行榜，以防止称为“benchmaxxing”的基准过拟合。 此举直接解决了 ASR 排行榜中基准作弊的关键问题，确保模型在未见数据上进行评估，促进公平比较和研究诚信。 私有数据集不公开，因此模型无法过拟合它们；排行榜现在包含“Benchmaxxer Repellant”机制，用于报告这些经过策划的保密测试集的准确率。
-
-rss · Hugging Face Blog · May 6, 00:00
-
-**背景**: 基准过拟合（即“benchmaxxing”）是指模型通过调整在公共测试集上表现良好，从而虚增排行榜分数，但并未提升实际性能。Open ASR Leaderboard 是 Hugging Face 的一个平台，用于评估跨多个数据集和语言的语音识别模型。通过引入私有数据，该排行榜可以更准确地反映模型的真实泛化能力。
-
-<details><summary>参考链接</summary>
-<ul>
-<li><a href="https://huggingface.co/blog/open-asr-leaderboard-private-data">Adding Benchmaxxer Repellant to the Open ASR Leaderboard</a></li>
-<li><a href="https://app.daily.dev/posts/adding-benchmaxxer-repellant-to-the-open-asr-leaderboard-nmod3ukfj">Adding Benchmaxxer Repellant to the Open ASR Leaderboard</a></li>
-
-</ul>
-</details>
-
-**标签**: `#ASR`, `#leaderboard`, `#evaluation`, `#benchmark`, `#Hugging Face`
+**标签**: `#AI`, `#copyright`, `#Meta`, `#legal`, `#liability`
 
 ---
 
 <a id="item-10"></a>
-## [微软代理模式对比苹果芯片短缺](https://stratechery.com/2026/microsoft-earnings-apple-earnings/) ⭐️ 8.0/10
+## [Hugging Face 为开放 ASR 排行榜添加私有数据以防止过拟合](https://huggingface.co/blog/open-asr-leaderboard-private-data) ⭐️ 8.0/10
 
-微软在最新财报中推出了新的代理业务模式，而苹果面临内存和芯片短缺，影响 AI 部署和产品路线图。 这些动态表明微软向 AI 驱动的盈利模式转变，同时凸显供应链限制可能拖慢苹果的 AI 进展，影响两家公司的竞争地位和投资者情绪。 微软的代理模式由小型跨职能团队主导 AI 工作流以实现端到端业务成果，而苹果的短缺主要影响 AI 推理所需的内存和芯片，可能推迟 Mac 的 AI 功能。
+Hugging Face 已在开放 ASR 排行榜中引入私有评估数据，这种称为“Benchmaxxer Repellant”的机制旨在防止模型在公共基准上过拟合。 这一举措解决了语音识别中日益严重的基准过拟合问题，确保排行榜排名更准确地反映模型的泛化能力和实际表现。 私有数据不会公开发布，因此模型无法在其上进行微调。开放 ASR 排行榜目前比较了 86 个系统在 12 个数据集上的多语言和长语音识别表现。
 
-rss · Stratechery · May 6, 10:00
+rss · Hugging Face Blog · May 6, 00:00
 
-**背景**: 代理业务模式将人类员工与 AI 代理组织起来协作实现特定成果，这是企业寻求 AI 变现的新兴范式。苹果的内存和芯片短缺源于高带宽内存和先进工艺供应紧张，这些对设备端运行大语言模型至关重要。
+**背景**: 基准过拟合是指模型被调整以在公共测试集上表现良好，从而虚增分数而实际没有改进。通过保留部分评估数据，排行榜可以更好地衡量泛化能力。开放 ASR 排行榜是一个社区驱动的平台，用于可复现的 ASR 评估。
 
 <details><summary>参考链接</summary>
 <ul>
-<li><a href="https://www.mckinsey.com/capabilities/people-and-organizational-performance/our-insights/the-agentic-organization-contours-of-the-next-paradigm-for-the-ai-era">The agentic organization: A new operating model for AI | McKinsey</a></li>
-<li><a href="https://mitsloan.mit.edu/ideas-made-to-matter/how-digital-business-models-are-evolving-age-agentic-ai">How digital business models are evolving in the age of agentic AI</a></li>
+<li><a href="https://huggingface.co/spaces/hf-audio/open_asr_leaderboard">Open ASR Leaderboard - a Hugging Face Space by hf-audio</a></li>
+<li><a href="https://arxiv.org/abs/2510.06961">[2510.06961] Open ASR Leaderboard: Towards Reproducible and Transparent Multilingual and Long-Form Speech Recognition Evaluation</a></li>
 
 </ul>
 </details>
 
-**标签**: `#Microsoft`, `#Apple`, `#AI`, `#business model`, `#supply chain`
+**标签**: `#ASR`, `#benchmarking`, `#leaderboard`, `#overfitting`, `#evaluation`
 
 ---
 
 <a id="item-11"></a>
-## [Ollama v0.23.1 添加 Gemma 4 MTP 推测解码支持](https://github.com/ollama/ollama/releases/tag/v0.23.1) ⭐️ 7.0/10
+## [微软与苹果财报：代理模式 vs 供应短缺](https://stratechery.com/2026/microsoft-earnings-apple-earnings/) ⭐️ 8.0/10
 
-Ollama v0.23.1 在 Mac 上引入了对 Gemma 4 MTP（多令牌处理）推测解码的支持，使用 Gemma 4 31B 模型进行编码任务时速度提升超过 2 倍。 此版本显著加速了 Mac 上的本地 LLM 推理，使 Gemma 4 31B 等高性能模型对开发者更实用。推测解码在保持输出质量的同时降低了延迟，从而实现更快的代码生成和迭代。 该功能可通过命令 `ollama run gemma4:31b-coding-mtp-bf16` 使用。此版本还包括对 MLX 和 MLX-C 的线程修复，并将 Go 更新至 1.26 版本。
+微软在财报中推出了代理商业模式，转向 AI 驱动的自主工作流，而苹果透露内存和芯片短缺影响了其产品线。 这标志着战略分歧：微软押注 AI 代理货币化，而苹果的硬件限制可能延迟产品发布和采用。 微软的代理模式涉及自主执行任务的 AI 代理，如客户服务和财务建议，可能创造新的收入来源。苹果面临高带宽内存和先进芯片短缺，影响 Mac 和 AI 功能。
 
-github · github-actions[bot] · May 5, 17:13
+rss · Stratechery · May 6, 10:00
 
-**背景**: 推测解码是一种推理优化技术，可同时预测和验证多个令牌，在不牺牲输出质量的情况下降低延迟。Gemma 4 的多令牌预测（MTP）草稿模型使用专用架构进一步加速推理，在某些情况下可实现高达 3 倍的加速。Ollama 将此技术集成到其 Mac 本地 LLM 运行程序中。
+**背景**: 代理 AI 指能够自主行动以实现目标的系统，利用大型语言模型和工作流。摩根大通和沃尔玛等公司正在尝试使用 AI 代理进行欺诈检测和个性化购物。这与仅响应查询的传统 AI 形成对比。
 
 <details><summary>参考链接</summary>
 <ul>
-<li><a href="https://developer.nvidia.com/blog/an-introduction-to-speculative-decoding-for-reducing-latency-in-ai-inference/">An Introduction to Speculative Decoding for Reducing Latency ...</a></li>
-<li><a href="https://blog.google/innovation-and-ai/technology/developers-tools/multi-token-prediction-gemma-4/">Multi-token-prediction in Gemma 4 - The Keyword</a></li>
+<li><a href="https://mitsloan.mit.edu/ideas-made-to-matter/agentic-ai-explained">Agentic AI, explained | MIT Sloan</a></li>
+<li><a href="https://www.mckinsey.com/capabilities/people-and-organizational-performance/our-insights/the-agentic-organization-contours-of-the-next-paradigm-for-the-ai-era">The agentic organization: A new operating model for AI | McKinsey</a></li>
 
 </ul>
 </details>
 
-**标签**: `#Ollama`, `#Gemma 4`, `#MLX`, `#speculative decoding`, `#performance`
+**标签**: `#Microsoft`, `#Apple`, `#earnings`, `#AI`, `#supply chain`
 
 ---
 
 <a id="item-12"></a>
-## [Langchain 0.3.29 修复反序列化和不受信任清单的安全漏洞](https://github.com/langchain-ai/langchain/releases/tag/langchain%3D%3D0.3.29) ⭐️ 7.0/10
+## [langchain-core 0.3.85 修复序列化注入漏洞](https://github.com/langchain-ai/langchain/releases/tag/langchain-core%3D%3D0.3.85) ⭐️ 7.0/10
 
-Langchain 发布了 0.3.29 版本，该补丁限制了 `langchain.storage._lc_store` 中的反序列化操作，并增强了 `load()` 函数对不受信任清单的防护。 这些修复解决了 CVE-2025-68664 等严重漏洞，这些漏洞可能允许攻击者通过反序列化攻击窃取敏感信息或执行任意代码，影响到这一流行大模型框架的所有用户。 该补丁包含两项更改：一项限制了存储模块中的反序列化，另一项增强了 `load()` 函数以防范不受信任的清单，具体见拉取请求 #37209 和 #37201。
+Langchain-core 发布了 0.3.85 版本，强化了 `load()` 函数以防止反序列化不受信任的清单，修复了 CVE-2025-68664 漏洞。 该漏洞允许攻击者通过构造的序列化对象提取秘密或执行提示注入，影响了许多 LangChain 集成和用户。 该修复主要针对 `load()` 函数处理包含 `lc` 键的清单的方式，此前这些清单未经适当验证即进行反序列化。
 
-github · github-actions[bot] · May 5, 21:02
+github · github-actions[bot] · May 5, 20:43
 
-**背景**: 反序列化漏洞发生在不受信任的数据被解析为对象时，攻击者可以注入恶意载荷。在 Langchain 中，`load()` 函数可能从不受信任的输入中实例化任意类，导致秘密信息泄露或远程代码执行。近期披露的 CVE-2025-68664 突显了此类风险，促使了本次修补。
+**背景**: LangChain 是一个用于构建大型语言模型应用程序的流行框架。其序列化格式使用特殊的 `lc` 标记来表示 LangChain 对象。漏洞 CVE-2025-68664 允许攻击者通过不受信任的清单注入恶意对象，从而导致秘密提取。0.3.85 版本中的修复增加了验证以防止这种情况。
 
 <details><summary>参考链接</summary>
 <ul>
-<li><a href="https://thehackernews.com/2025/12/critical-langchain-core-vulnerability.html">Critical LangChain Core Vulnerability Exposes Secrets via ...</a></li>
-<li><a href="https://cybersecuritynews.com/langchain-vulnerability/">Critical Langchain Vulnerability Let attackers Exfiltrate ...</a></li>
-<li><a href="https://www.sentinelone.com/vulnerability-database/cve-2025-68664/">CVE-2025-68664: Langchain Core Serialization Vulnerability</a></li>
+<li><a href="https://cyata.ai/blog/langgrinch-langchain-core-cve-2025-68664/">All I Want for Christmas is Your Secrets: LangGrinch hits LangChain Core (CVE-2025-68664) - Cyata | The Control Plane for Agentic Identity</a></li>
+<li><a href="https://thehackernews.com/2025/12/critical-langchain-core-vulnerability.html">Critical LangChain Core Vulnerability Exposes Secrets via Serialization Injection</a></li>
+<li><a href="https://www.upwind.io/feed/cve-2025-68664-langchain-serialization-injection">CVE-2025-68664: LangChain Serialization Injection in dumps() and load()</a></li>
 
 </ul>
 </details>
 
-**标签**: `#security`, `#langchain`, `#python`, `#patch`
+**标签**: `#langchain`, `#security`, `#python`, `#release`, `#fix`
 
 ---
 
 <a id="item-13"></a>
-## [LangChain Core 0.3.85 修复 load() 安全漏洞](https://github.com/langchain-ai/langchain/releases/tag/langchain-core%3D%3D0.3.85) ⭐️ 7.0/10
+## [LangChain Classic 1.0.6 修复关键安全漏洞](https://github.com/langchain-ai/langchain/releases/tag/langchain-classic%3D%3D1.0.6) ⭐️ 7.0/10
 
-LangChain 发布了 langchain-core 0.3.85 版本，其中包含一项安全修复，增强了 `load()` 函数对不可信清单的防护。 此次更新对 LangChain 框架用户至关重要，因为其缓解了可能导致机密窃取或提示注入的潜在反序列化攻击。 该补丁在 `load()` 和 `loads()` 函数中引入了新的 `allowed_objects` 白名单参数，以限制可被反序列化的类。
+LangChain 发布了其经典包的 1.0.6 版本，修补了两个安全漏洞：一个限制了存储模块中的反序列化，另一个加强了 load() 函数以防止不受信任的清单。 这些修复涉及严重的序列化注入漏洞（CVE-2025-68664），攻击者可能利用它提取机密或执行任意代码，影响了许多使用 LangChain 的生产 AI 系统。用户应立即升级以降低风险。 storage._lc_store 中的补丁限制了反序列化以防止恶意载荷，而 load() 函数现在在处理前验证清单。此版本还更新了 jupyter-server 并修复了 hub.pull 的弃用警告。
 
-github · github-actions[bot] · May 5, 20:43
+github · github-actions[bot] · May 5, 21:02
 
-**背景**: LangChain 是一个用于构建大型语言模型（LLM）驱动应用程序的流行框架。`load()` 函数用于从序列化数据中反序列化 LangChain 对象。此前，它可能被包含恶意类名的不可信清单利用，导致任意代码执行或数据泄露。
+**背景**: LangChain 是一个流行的框架，用于构建基于大型语言模型（LLM）的应用程序。序列化漏洞发生在未经验证的情况下反序列化不受信任的数据，使攻击者能够注入恶意对象。最近的 CVE-2025-68664 影响了 LangChain Core 的 dumps() 和 dumpd() 函数，这些函数没有转义字典中的 'lc' 键，从而导致机密信息泄露。
 
 <details><summary>参考链接</summary>
 <ul>
-<li><a href="https://thehackernews.com/2025/12/critical-langchain-core-vulnerability.html">Critical LangChain Core Vulnerability Exposes Secrets via ...</a></li>
-<li><a href="https://github.com/advisories/GHSA-c67j-w6g6-q2cm">LangChain serialization injection vulnerability enables ...</a></li>
+<li><a href="https://thehackernews.com/2025/12/critical-langchain-core-vulnerability.html">Critical LangChain Core Vulnerability Exposes Secrets via Serialization Injection</a></li>
+<li><a href="https://github.com/langchain-ai/langchainjs/security/advisories/GHSA-r399-636x-v7f6">LangChain serialization injection vulnerability enables secret extraction</a></li>
+<li><a href="https://cyata.ai/blog/langgrinch-langchain-core-cve-2025-68664/">All I Want for Christmas is Your Secrets: LangGrinch hits LangChain Core (CVE-2025-68664) - Cyata | The Control Plane for Agentic Identity</a></li>
 
 </ul>
 </details>
 
-**标签**: `#security`, `#langchain`, `#python`, `#patch`, `#dependency`
+**标签**: `#security`, `#langchain`, `#python`, `#AI framework`, `#vulnerability`
 
 ---
 
 <a id="item-14"></a>
-## [Langchain-Classic 1.0.6 修复反序列化和清单信任问题](https://github.com/langchain-ai/langchain/releases/tag/langchain-classic%3D%3D1.0.6) ⭐️ 7.0/10
+## [Telus 使用 AI 实时修改呼叫中心客服口音](https://letsdatascience.com/news/telus-uses-ai-to-alter-call-agent-accents-a3868f63) ⭐️ 7.0/10
 
-Langchain-classic 1.0.6 已发布，修复了 `_lc_store` 中的反序列化漏洞，并强化了 `load()` 函数以防止不受信任的清单。 这些安全补丁对经典 LangChain 框架的用户至关重要，因为不安全的反序列化可能导致远程代码执行。修复措施保护 AI 应用程序免受利用恶意序列化数据或清单的攻击。 此版本包含两个关键提交：一个限制 `langchain_classic.storage._lc_store` 中的反序列化，另一个强化 `load()` 以防范来自 Hub 的不受信任清单。版本更新还升级了 jupyter-server 依赖。
+加拿大电信公司 Telus 正在使用 AI 实时更改呼叫中心客服的口音，以匹配客户的口音，旨在提高沟通清晰度和客户满意度。 这一部署引发了关于文化认同、非人性化以及口音修改是真正改善沟通还是仅掩盖系统性问题的重要讨论。它代表了 AI 语音转换在大量客户服务场景中的重要实际应用。 据报道，该技术在不改变客服自然声音的情况下修改口音，但批评者认为它可能降低音频质量，并忽视了麦克风质量差和工作环境嘈杂等根本原因。社区评论既提到了对口音清晰度的正面体验，也表达了对非人性化的担忧。
 
-github · github-actions[bot] · May 5, 21:02
+hackernews · debo_ · May 6, 01:38
 
-**背景**: Langchain-classic 是用于构建 LLM 驱动应用的 LangChain 框架的旧版本。反序列化漏洞在 AI 框架中很常见——攻击者可以构造恶意序列化对象来执行任意代码。`load()` 函数从 LangChain Hub 检索链，因此清单信任成为关键的安全问题。
+**背景**: AI 口音转换技术使用深度学习实时转换说话者的口音，通常转换为标准或目标口音，同时保留说话者的声音特征。类似服务如 Krisp 和 Utell AI 为呼叫中心和会议提供实时口音转换，但 Telus 的采用标志着在主要电信公司的实际部署。
 
 <details><summary>参考链接</summary>
 <ul>
-<li><a href="https://www.doc-e.ai/post/ai-framework-vulnerabilities-and-insecure-deserialization">AI Framework Vulnerabilities and Insecure Deserialization</a></li>
-<li><a href="https://deepwiki.com/hwchase17/langchain-hub/3.1-loading-and-using-chains">Loading and Using Chains | hwchase17/langchain-hub | DeepWiki</a></li>
+<li><a href="https://krisp.ai/ai-accent-conversion/">Krisp AI Accent Conversion | Clearer Communication in Real-Time</a></li>
+<li><a href="https://utell.ai/">Best AI Accent Conversion Software & Solutions - Utell AI</a></li>
+<li><a href="https://www.assemblyai.com/blog/ai-contact-centers-voice-agents">AI call centers: How AI voice agents are transforming contact centers</a></li>
 
 </ul>
 </details>
 
-**社区讨论**: 此版本未提供社区评论。
+**社区讨论**: 社区评论意见分歧：一些用户欢迎该技术，因为它有助于在推销电话中更好地理解客服；而另一些人批评其非人性化，并认为真正的问题是音频设备差和工作条件恶劣。还有评论者指出，文章本身似乎是 AI 生成的摘要。
 
-**标签**: `#langchain`, `#security`, `#python`, `#ai-framework`, `#patch-release`
+**标签**: `#AI voice modification`, `#call centers`, `#ethics`, `#telecom`, `#accent modification`
 
 ---
 
 <a id="item-15"></a>
-## [计算机使用成本是结构化 API 的 45 倍](https://reflex.dev/blog/computer-use-is-45x-more-expensive-than-structured-apis/) ⭐️ 7.0/10
+## [生物计算恐惧被 Doom 演示真相缓解](https://kuber.studio/blog/Reflections/I%27m-Scared-About-Biological-Computing) ⭐️ 7.0/10
 
-Reflex 的最新分析显示，使用计算机视觉进行 UI 自动化的 AI 代理，其成本是使用结构化 API 完成相同任务的 45 倍。 这一成本比率彻底改变了工程师和产品经理的经济考量，使结构化 API 成为成本敏感型自动化工作流的明确优先选择，而计算机视觉方法仅应作为最后手段。 45 倍的代价很可能源于视觉处理的高 token 消耗、延迟和 API 成本，而结构化 API 则能直接访问数据。分析建议仅在无法使用 API 的遗留系统或外部系统中采用计算机视觉方法。
+一篇表达对生物计算恐惧的博文被社区评论反驳，这些评论指出 Doom 神经元演示依赖于传统的 PyTorch 框架，而非纯粹的生物计算。 这凸显了在生物计算等新兴领域批判性评估耸人听闻的主张的重要性，因为误解可能影响公众和科学界的看法。 该演示由 Cortical Labs 发布，使用芯片上的活体人类神经元玩 Doom，但其设置包括一个包裹在生物组件周围的完整 PyTorch 框架，如链接的 GitHub 代码所示。
 
-hackernews · palashawas · May 5, 16:34
+hackernews · kuberwastaken · May 5, 16:03
 
-**背景**: 计算机使用代理依赖计算机视觉来解读屏幕并模拟人类操作，导致计算成本高且速度慢。相比之下，结构化 API 提供直接、高效的机器间通信。45 倍的成本比率凸显了设计具有良好解耦后端和 API 的系统的经济优势。
+**背景**: 生物计算利用活的生物材料执行计算功能。Cortical Labs 的 Doom 神经元演示使用了在硅芯片上培养的 20 万个人类神经元来玩经典游戏，但评论者指出该系统严重依赖传统软件栈进行控制和解释。
 
 <details><summary>参考链接</summary>
 <ul>
-<li><a href="https://aitoolly.com/ai-news/article/2026-05-06-the-45x-cost-penalty-why-ai-vision-agents-struggle-against-structured-apis-in-new-benchmarks">AI Vision Agents vs APIs: A 45x Cost Difference Analysis</a></li>
-<li><a href="https://techcommunity.microsoft.com/blog/azure-ai-foundry-blog/the-future-of-ai-computer-use-agents-have-arrived/4401025">Computer Use Agents (CUAs) for Enhanced Automation</a></li>
-<li><a href="https://openai.com/index/computer-using-agent/">Computer-Using Agent - OpenAI</a></li>
+<li><a href="https://www.scientificamerican.com/article/how-human-neurons-on-a-chip-learned-to-play-doom/">How human neurons on a chip learned to play Doom | Scientific American</a></li>
+<li><a href="https://www.newscientist.com/article/2517389-human-brain-cells-on-a-chip-learned-to-play-doom-in-a-week/">Human brain cells on a chip learned to play Doom in a week | New Scientist</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Biological_computing">Biological computing - Wikipedia</a></li>
 
 </ul>
 </details>
 
-**社区讨论**: 评论者指出成本差距在意料之中，并提出了变通方案，例如使用无障碍 API 或让代理将 UI 映射为结构化接口。还有人认为，如果后端与前端充分解耦，构建专用 API 并非额外工程，因此这种比较对设计良好的系统意义不大。
+**社区讨论**: 像 pjs_和 Imnimo 等评论者纠正了博文的误解，指出演示并非纯粹生物性的，而是与 PyTorch 混合的。其他评论者如 philips 提出了与素食主义的伦理相似性，而 slibhb 则讨论了意识方面的含义。
 
-**标签**: `#cost-comparison`, `#ai-agents`, `#api-economics`, `#automation`, `#ui-automation`
+**标签**: `#biological computing`, `#neuroscience`, `#AI ethics`, `#debunking`, `#community discussion`
 
 ---
 
 <a id="item-16"></a>
-## [Airbyte 推出智能体，实现跨业务系统的统一数据访问](https://news.ycombinator.com/item?id=48023496) ⭐️ 7.0/10
+## [德尔蒙破产后加州农民将销毁 42 万棵桃树](https://www.sfgate.com/centralcoast/article/usda-aid-california-farmers-22240694.php) ⭐️ 7.0/10
 
-Airbyte 发布了 Airbyte Agents，这是一个统一的数据层，为 AI 智能体提供跨多个运营系统（如 Slack、Salesforce 和 Linear）的上下文和访问能力。其核心组件 Context Store 是一个针对智能体搜索优化的数据索引，由 Airbyte 的复制连接器填充。 这解决了企业采用 AI 时的一个关键瓶颈：智能体往往难以在孤立的系统间发现和查询数据，导致 API 调用效率低下且回答错误。通过预先索引数据并提供结构化的上下文层，Airbyte Agents 可以显著减少 Token 消耗并提高回答准确性。 在基准测试中，Airbyte Agents 比 Gong 自己的 MCP 最多节省 80% 的 Token，Zendesk 节省 90%，Linear 节省 75%，Salesforce 节省 16%。基准测试工具已在 GitHub 上开源。Airbyte Agents 支持模型上下文协议（MCP），可与 Claude 和 ChatGPT 等 AI 助手集成。
+由于主要罐头收购商德尔蒙破产，加州农民将销毁 42 万棵粘核桃树。 这一事件凸显了依赖少数大型加工商的农业供应链的脆弱性，当这些加工商倒闭时，会导致大量的食物浪费和农民的经济困难。 粘核桃是专为罐头加工培育的品种，不适合鲜食。加州仅存的罐头厂无法消化过剩产量，销毁树木使农民能够重新种植新作物，但恢复需要数年时间。
 
-hackernews · mtricot · May 5, 15:03
+hackernews · littlexsparkee · May 5, 18:13
 
-**背景**: AI 智能体通常需要与多个业务工具交互，但每个工具都有自己的 API，具有不同的认证、分页和数据模型。模型上下文协议（MCP）是一个开放标准，通过为智能体提供统一的协议来简化和获取数据交互。然而，MCP 实现通常是 API 的薄包装，导致智能体在运行时仍需处理复杂的发现和实体匹配问题。
+**背景**: 粘核桃的果肉紧贴果核，质地较硬，非常适合罐头加工。它们通常在大型单一作物农场种植，并出售给工业罐头厂。德尔蒙是加州最后几家大型罐头厂之一，其破产让粘核桃种植者失去了市场。
 
 <details><summary>参考链接</summary>
 <ul>
-<li><a href="https://modelcontextprotocol.io/docs/getting-started/intro">What is the Model Context Protocol (MCP)?</a></li>
-<li><a href="https://learn.microsoft.com/en-us/azure/developer/ai/intro-agents-mcp">Build Agents using Model Context Protocol on Azure</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Peach">Peach - Wikipedia</a></li>
+<li><a href="https://www.sierragoldtrees.com/cling-peaches">Cling Peach Varieties</a></li>
 
 </ul>
 </details>
 
-**社区讨论**: 前 Airbyte 员工 swyx 称赞了公司对 AI 时代的适应，并指出 Airbyte Agents 可作为 MCP 网关使用，类似 Anthropic 内部使用 MCP 的方式。用户 thecopy 强调了上下文的重要性，并询问了加密和保密性问题。Andai 想知道是否可以直接在这些系统上运行 SQL 来解决问题。
+**社区讨论**: 评论者强调了大量农产品运输的物流困难、粘核桃的专业特性以及依赖单一买家的单一作物种植风险。有人指出，消费者偏好转向新鲜水果，导致对罐装桃子的需求减少。
 
-**标签**: `#AI agents`, `#data integration`, `#MCP`, `#product launch`, `#enterprise AI`
+**标签**: `#agriculture`, `#supply-chain`, `#bankruptcy`, `#california`, `#food-industry`
 
 ---
