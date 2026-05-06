@@ -11,7 +11,7 @@ from typing import Any
 import httpx
 
 from src.markets.providers import parse_fred_csv, parse_stooq_csv, parse_yahoo_chart
-from src.markets.us_index_core import build_alerts, build_metrics, week_id
+from src.markets.us_index_core import build_alerts, build_interpretations, build_metrics, week_id
 from src.markets.us_index_render import render_us_index_markdown
 
 CONFIG_PATH = Path("data/us_index_monitor.json")
@@ -42,26 +42,26 @@ async def fetch_json(client: httpx.AsyncClient, url: str) -> dict[str, Any] | No
 
 
 async def fetch_stooq(client: httpx.AsyncClient, symbol: str) -> list[dict[str, Any]]:
-    url = f"https://stooq.com/q/d/l/?s={symbol}&i=d"
-    return parse_stooq_csv(await fetch_text(client, url))
+    return parse_stooq_csv(await fetch_text(client, f"https://stooq.com/q/d/l/?s={symbol}&i=d"))
 
 
 async def fetch_yahoo_chart(client: httpx.AsyncClient, symbol: str) -> list[dict[str, Any]]:
-    url = f"https://query1.finance.yahoo.com/v8/finance/chart/{symbol}?range=10y&interval=1d"
-    return parse_yahoo_chart(await fetch_json(client, url))
+    return parse_yahoo_chart(await fetch_json(client, f"https://query1.finance.yahoo.com/v8/finance/chart/{symbol}?range=10y&interval=1d"))
 
 
-async def fetch_price_rows(client: httpx.AsyncClient, symbol: str, stooq_symbol: str) -> list[dict[str, Any]]:
+async def fetch_price_rows(client: httpx.AsyncClient, symbol: str, stooq_symbol: str) -> tuple[list[dict[str, Any]], dict[str, Any]]:
     rows = await fetch_stooq(client, stooq_symbol)
     if rows:
-        return rows
-    yahoo_symbol = YAHOO_SYMBOLS.get(symbol, symbol)
-    return await fetch_yahoo_chart(client, yahoo_symbol)
+        return rows, {"source": "stooq", "rows": len(rows), "status": "ok"}
+    rows = await fetch_yahoo_chart(client, YAHOO_SYMBOLS.get(symbol, symbol))
+    if rows:
+        return rows, {"source": "yahoo_fallback", "rows": len(rows), "status": "ok"}
+    return [], {"source": "none", "rows": 0, "status": "empty"}
 
 
-async def fetch_fred(client: httpx.AsyncClient, series_id: str) -> list[dict[str, Any]]:
-    url = f"https://fred.stlouisfed.org/graph/fredgraph.csv?id={series_id}"
-    return parse_fred_csv(await fetch_text(client, url), series_id)
+async def fetch_fred(client: httpx.AsyncClient, series_id: str) -> tuple[list[dict[str, Any]], dict[str, Any]]:
+    rows = parse_fred_csv(await fetch_text(client, f"https://fred.stlouisfed.org/graph/fredgraph.csv?id={series_id}"), series_id)
+    return rows, {"source": "fred", "rows": len(rows), "status": "ok" if rows else "empty"}
 
 
 async def main() -> None:
@@ -75,14 +75,15 @@ async def main() -> None:
         symbols.update(config.get("symbols", {}).get(group, {}))
 
     async with httpx.AsyncClient(timeout=30.0, headers={"User-Agent": "Horizon/1.0"}) as client:
-        price_rows = {
-            symbol: await fetch_price_rows(client, symbol, meta["stooq_symbol"])
-            for symbol, meta in symbols.items()
-        }
-        fred_rows = {
-            series_id: await fetch_fred(client, series_id)
-            for series_id in config.get("fred_series", {})
-        }
+        price_results = {s: await fetch_price_rows(client, s, m["stooq_symbol"]) for s, m in symbols.items()}
+        fred_results = {sid: await fetch_fred(client, sid) for sid in config.get("fred_series", {})}
+
+    price_rows = {s: result[0] for s, result in price_results.items()}
+    fred_rows = {sid: result[0] for sid, result in fred_results.items()}
+    data_health = {
+        "prices": {s: result[1] for s, result in price_results.items()},
+        "macro": {sid: result[1] for sid, result in fred_results.items()},
+    }
 
     metrics = build_metrics(price_rows, fred_rows, config)
     alerts = build_alerts(config, metrics)
@@ -93,8 +94,10 @@ async def main() -> None:
         "generated_at": now.isoformat(),
         "status": "success",
         "config": config,
+        "data_health": data_health,
         "metrics": metrics,
         "alerts": alerts,
+        "interpretations": build_interpretations(metrics),
     }
 
     POSTS_DIR.mkdir(parents=True, exist_ok=True)
@@ -108,7 +111,6 @@ async def main() -> None:
     STATUS_PATH.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
     data_path = DATA_DIR / f"us_index_weekly_{today.replace('-', '')}.json"
     data_path.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
-
     print(f"Wrote {post_path}")
     print(f"Wrote {STATUS_PATH}")
     print(f"Wrote {data_path}")
