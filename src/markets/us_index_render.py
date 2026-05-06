@@ -7,6 +7,10 @@ from typing import Any
 
 from .us_index_core import week_id
 
+RATE_SERIES = {"DGS10", "DFII10", "FEDFUNDS", "BAMLH0A0HYM2"}
+INDEX_LEVEL_SERIES = {"CPIAUCSL", "CPILFESL"}
+PERCENT_POINT_SERIES = {"UNRATE"}
+
 
 def fmt_pct(value: float | None) -> str:
     return "n/a" if value is None else f"{value * 100:.1f}%"
@@ -20,10 +24,29 @@ def fmt_bp(value: float | None) -> str:
     return "n/a" if value is None else f"{value * 100:.0f} bp"
 
 
+def fmt_pp(value: float | None) -> str:
+    return "n/a" if value is None else f"{value:.2f} pp"
+
+
+def fmt_index_change(value: float | None) -> str:
+    return "n/a" if value is None else f"{value:.2f} pts"
+
+
+def fmt_macro_change(series_id: str, value: float | None) -> str:
+    if series_id in RATE_SERIES:
+        return fmt_bp(value)
+    if series_id in PERCENT_POINT_SERIES:
+        return fmt_pp(value)
+    if series_id in INDEX_LEVEL_SERIES:
+        return fmt_index_change(value)
+    return fmt_num(value)
+
+
 def render_us_index_markdown(report: dict[str, Any]) -> str:
     config = report["config"]
     metrics = report["metrics"]
     alerts = report["alerts"]
+    interpretations = report.get("interpretations", [])
     now = datetime.fromisoformat(report["generated_at"])
     today = report["date"]
     wid = report["week_id"]
@@ -62,6 +85,16 @@ def render_us_index_markdown(report: dict[str, Any]) -> str:
         f"- QQQ/SPY 本周变化：{fmt_pct(rel.get('return_1w'))}。",
         f"- VIX 当前值：{fmt_num(vix.get('last'))}。",
         "",
+        "## 规则化解读",
+        "",
+    ])
+    if interpretations:
+        lines.extend([f"- {item}" for item in interpretations])
+    else:
+        lines.append("- 本期没有生成额外规则化解读。")
+
+    lines.extend([
+        "",
         "## 指数状态",
         "",
         "| 指标 | SPY | QQQ |",
@@ -90,7 +123,8 @@ def render_us_index_markdown(report: dict[str, Any]) -> str:
         macro = metrics.get("macro", {}).get(series_id, {})
         lines.append(
             f"| {label} ({series_id}) | {fmt_num(macro.get('latest'))} | "
-            f"{fmt_bp(macro.get('weekly_change'))} | {fmt_bp(macro.get('monthly_change'))} | {macro.get('date') or 'n/a'} |"
+            f"{fmt_macro_change(series_id, macro.get('weekly_change'))} | "
+            f"{fmt_macro_change(series_id, macro.get('monthly_change'))} | {macro.get('date') or 'n/a'} |"
         )
 
     targets = portfolio.get("targets", {})
