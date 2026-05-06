@@ -2,7 +2,7 @@
   "report": "us-index-weekly",
   "date": "2026-05-06",
   "week_id": "2026-W19",
-  "generated_at": "2026-05-06T14:44:27.036978+00:00",
+  "generated_at": "2026-05-06T14:45:28.432115+00:00",
   "status": "success",
   "config": {
     "version": "1.0",
@@ -81,76 +81,76 @@
   "metrics": {
     "prices": {
       "SPY": {
-        "date": null,
-        "last": null,
-        "drawdown": null,
-        "above_200dma": null,
-        "return_1w": null,
-        "return_1m": null,
-        "return_1y": null,
-        "vol_30d": null,
-        "vol_90d": null
+        "date": "2026-05-06",
+        "last": 731.989990234375,
+        "drawdown": 0.0,
+        "above_200dma": true,
+        "return_1w": 0.0286826114482559,
+        "return_1m": 0.11038806887727226,
+        "return_1y": 0.2989831192862469,
+        "vol_30d": 0.15702158009064043,
+        "vol_90d": 0.13869294140873697
       },
       "QQQ": {
-        "date": null,
-        "last": null,
-        "drawdown": null,
-        "above_200dma": null,
-        "return_1w": null,
-        "return_1m": null,
-        "return_1y": null,
-        "vol_30d": null,
-        "vol_90d": null
+        "date": "2026-05-06",
+        "last": 691.2999877929688,
+        "drawdown": 0.0,
+        "above_200dma": true,
+        "return_1w": 0.04493852523483599,
+        "return_1m": 0.17450170110123353,
+        "return_1y": 0.42263288583261627,
+        "vol_30d": 0.19910739502830443,
+        "vol_90d": 0.1794347779867379
       },
       "RSP": {
-        "date": null,
-        "last": null,
-        "drawdown": null,
-        "above_200dma": null,
-        "return_1w": null,
-        "return_1m": null,
-        "return_1y": null,
-        "vol_30d": null,
-        "vol_90d": null
+        "date": "2026-05-06",
+        "last": 204.94000244140625,
+        "drawdown": -0.0001463569259804176,
+        "above_200dma": true,
+        "return_1w": 0.02260365598782399,
+        "return_1m": 0.05917616736357334,
+        "return_1y": 0.19624091571256197,
+        "vol_30d": 0.13199766501948487,
+        "vol_90d": 0.12691893565489154
       },
       "QQEW": {
-        "date": null,
-        "last": null,
-        "drawdown": null,
-        "above_200dma": null,
-        "return_1w": null,
-        "return_1m": null,
-        "return_1y": null,
-        "vol_30d": null,
-        "vol_90d": null
+        "date": "2026-05-06",
+        "last": 141.375,
+        "drawdown": -0.03326726826054094,
+        "above_200dma": true,
+        "return_1w": 0.034426003468870814,
+        "return_1m": 0.10319942827463868,
+        "return_1y": 0.13865170610609634,
+        "vol_30d": 0.21477594828526164,
+        "vol_90d": 0.20295345532475734
       },
       "VIX": {
-        "date": null,
-        "last": null,
-        "drawdown": null,
-        "above_200dma": null,
-        "return_1w": null,
-        "return_1m": null,
-        "return_1y": null,
-        "vol_30d": null,
-        "vol_90d": null
+        "date": "2026-05-06",
+        "last": 16.979999542236328,
+        "drawdown": -0.7946547461494118,
+        "above_200dma": false,
+        "return_1w": -0.0972886749422548,
+        "return_1m": -0.34134991893028666,
+        "return_1y": -0.281725889143991,
+        "vol_30d": 1.0843249053206796,
+        "vol_90d": 1.2895556249291085
       }
     },
     "relative": {
       "QQQ_SPY": {
-        "latest": null,
-        "return_1w": null,
-        "return_1m": null
+        "latest": 0.94441180482758,
+        "return_1w": 0.015802652446602394,
+        "return_1m": 0.057739842511805195
       },
       "RSP_SPY": {
-        "latest": null,
-        "return_1w": null,
-        "return_1m": null
+        "latest": 0.27997650948175773,
+        "return_1w": -0.005909456806967306,
+        "return_1m": -0.04612072387042143
       },
       "QQEW_QQQ": {
-        "latest": null,
-        "return_1w": null,
-        "return_1m": null
+        "latest": 0.20450600679359354,
+        "return_1w": -0.010060421270813524,
+        "return_1m": -0.06070853091122863
       }
     },
     "macro": {
@@ -208,9 +208,9 @@
         "cash": 0.0
       },
       "deviation": {
-        "SPY": 0.0,
         "QQQ": 0.0,
-        "cash": 0.0
+        "cash": 0.0,
+        "SPY": 0.0
       },
       "rebalance_signal": "within_policy_band"
     }
