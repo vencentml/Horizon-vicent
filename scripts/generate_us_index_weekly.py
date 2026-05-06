@@ -12,7 +12,7 @@ import httpx
 
 from src.markets.providers import parse_fred_csv, parse_stooq_csv, parse_yahoo_chart
 from src.markets.us_index_core import build_alerts, build_interpretations, build_metrics, week_id
-from src.markets.us_index_render import render_us_index_markdown
+from src.markets.us_index_render_simple import render_us_index_markdown
 
 CONFIG_PATH = Path("data/us_index_monitor.json")
 POSTS_DIR = Path("docs/_posts")
