@@ -10,7 +10,7 @@ from typing import Any
 
 import httpx
 
-from src.markets.providers import parse_fred_csv, parse_stooq_csv
+from src.markets.providers import parse_fred_csv, parse_stooq_csv, parse_yahoo_chart
 from src.markets.us_index_core import build_alerts, build_metrics, week_id
 from src.markets.us_index_render import render_us_index_markdown
 
@@ -18,6 +18,7 @@ CONFIG_PATH = Path("data/us_index_monitor.json")
 POSTS_DIR = Path("docs/_posts")
 STATUS_PATH = Path("docs/status/latest-us-index-weekly.json")
 DATA_DIR = Path("docs/_data/market")
+YAHOO_SYMBOLS = {"SPY": "SPY", "QQQ": "QQQ", "RSP": "RSP", "QQEW": "QQEW", "VIX": "^VIX"}
 
 
 async def fetch_text(client: httpx.AsyncClient, url: str) -> str | None:
@@ -30,9 +31,32 @@ async def fetch_text(client: httpx.AsyncClient, url: str) -> str | None:
         return None
 
 
+async def fetch_json(client: httpx.AsyncClient, url: str) -> dict[str, Any] | None:
+    try:
+        response = await client.get(url, follow_redirects=True)
+        response.raise_for_status()
+        return response.json()
+    except Exception as exc:
+        print(f"WARN: failed to fetch {url}: {exc}")
+        return None
+
+
 async def fetch_stooq(client: httpx.AsyncClient, symbol: str) -> list[dict[str, Any]]:
     url = f"https://stooq.com/q/d/l/?s={symbol}&i=d"
     return parse_stooq_csv(await fetch_text(client, url))
+
+
+async def fetch_yahoo_chart(client: httpx.AsyncClient, symbol: str) -> list[dict[str, Any]]:
+    url = f"https://query1.finance.yahoo.com/v8/finance/chart/{symbol}?range=10y&interval=1d"
+    return parse_yahoo_chart(await fetch_json(client, url))
+
+
+async def fetch_price_rows(client: httpx.AsyncClient, symbol: str, stooq_symbol: str) -> list[dict[str, Any]]:
+    rows = await fetch_stooq(client, stooq_symbol)
+    if rows:
+        return rows
+    yahoo_symbol = YAHOO_SYMBOLS.get(symbol, symbol)
+    return await fetch_yahoo_chart(client, yahoo_symbol)
 
 
 async def fetch_fred(client: httpx.AsyncClient, series_id: str) -> list[dict[str, Any]]:
@@ -52,7 +76,7 @@ async def main() -> None:
 
     async with httpx.AsyncClient(timeout=30.0, headers={"User-Agent": "Horizon/1.0"}) as client:
         price_rows = {
-            symbol: await fetch_stooq(client, meta["stooq_symbol"])
+            symbol: await fetch_price_rows(client, symbol, meta["stooq_symbol"])
             for symbol, meta in symbols.items()
         }
         fred_rows = {
