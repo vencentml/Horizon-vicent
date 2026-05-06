@@ -5,7 +5,7 @@ title: Horizon 信息雷达
 
 # Horizon 信息雷达
 
-这是一个自动运行的信息系统：每天生成综合技术简报，每周生成 GitHub 热门项目周报和俄乌战争进展周报。
+这是一个自动运行的信息系统：每天生成综合技术简报，每周生成 GitHub 热门项目周报、俄乌战争进展周报和投资监控周报。
 
 <div class="horizon-dashboard" markdown="1">
 
@@ -18,7 +18,7 @@ title: Horizon 信息雷达
 <ul class="post-list">
 {% assign daily_count = 0 %}
 {% for post in site.posts %}
-  {% if post.lang == "zh" and post.category != "github-weekly" and post.category != "ukraine-war-weekly" %}
+  {% if post.lang == "zh" and post.category != "github-weekly" and post.category != "ukraine-war-weekly" and post.category != "us-index-weekly" %}
     {% assign daily_count = daily_count | plus: 1 %}
     {% if daily_count <= 14 %}
       <li>
@@ -29,6 +29,31 @@ title: Horizon 信息雷达
 {% endfor %}
 {% if daily_count == 0 %}
   <li><em>暂无每日速递。手动运行 Daily Horizon Summary 后会出现在这里。</em></li>
+{% endif %}
+</ul>
+
+</section>
+
+<section class="horizon-card" markdown="1">
+
+## 投资监控周报
+
+每周监控 S&P 500 和 Nasdaq-100 的长期投资风险状态、市场压力、组合纪律和未来新增资金方向。它不是短线买卖建议。
+
+<ul class="post-list">
+{% assign us_index_count = 0 %}
+{% for post in site.posts %}
+  {% if post.category == "us-index-weekly" %}
+    {% assign us_index_count = us_index_count | plus: 1 %}
+    {% if us_index_count <= 12 %}
+      <li>
+        <a href="{{ post.url | relative_url }}">{{ post.date | date: "%Y-%m-%d" }}｜{{ post.title }}</a>
+      </li>
+    {% endif %}
+  {% endif %}
+{% endfor %}
+{% if us_index_count == 0 %}
+  <li><em>暂无投资监控周报。手动运行 Weekly US Index Monitor 后会出现在这里。</em></li>
 {% endif %}
 </ul>
 
@@ -93,6 +118,7 @@ title: Horizon 信息雷达
 | 报告 | Workflow | 频率 | 内容 |
 |---|---|---:|---|
 | 每日速递 | Daily Horizon Summary | 每天 | 综合技术和趋势简报 |
+| 投资监控周报 | Weekly US Index Monitor | 每周一 | S&P 500 / Nasdaq-100 长期投资风险和组合纪律监控 |
 | GitHub 热门项目周报 | Weekly GitHub Trending Summary | 每周一 | 热门开源项目中文解读 |
 | 俄乌战争一周进展 | Weekly Russia-Ukraine War Summary | 每周一 | 最近一周公开来源态势汇总 |
 
