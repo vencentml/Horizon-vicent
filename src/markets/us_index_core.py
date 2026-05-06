@@ -133,3 +133,64 @@ def build_alerts(config: dict[str, Any], metrics: dict[str, Any]) -> list[dict[s
         alerts.append({"level": "info", "type": signal, "message": "组合权重偏离政策区间；未来新增资金优先修正偏离，而不是追涨。"})
 
     return alerts
+
+
+def build_interpretations(metrics: dict[str, Any]) -> list[str]:
+    """Create deterministic, non-trading interpretations for the report."""
+    notes: list[str] = []
+    prices = metrics.get("prices", {})
+    relative = metrics.get("relative", {})
+    macro = metrics.get("macro", {})
+    portfolio = metrics.get("portfolio", {})
+
+    spy = prices.get("SPY", {})
+    qqq = prices.get("QQQ", {})
+    vix = prices.get("VIX", {})
+    rsp_spy = relative.get("RSP_SPY", {})
+    qqew_qqq = relative.get("QQEW_QQQ", {})
+    qqq_spy = relative.get("QQQ_SPY", {})
+
+    if vix.get("last") is None:
+        notes.append("市场压力：VIX 数据不可用，本期不判断波动压力。")
+    elif vix["last"] < 20:
+        notes.append("市场压力：VIX 低于 20，当前风险偏好未显示明显压力。")
+    elif vix["last"] < 30:
+        notes.append("市场压力：VIX 高于 20，风险偏好有所下降。")
+    else:
+        notes.append("市场压力：VIX 高于 30，市场压力显著上升，应避免情绪化操作。")
+
+    if spy.get("above_200dma") is True and qqq.get("above_200dma") is True:
+        notes.append("趋势状态：SPY 与 QQQ 均高于 200 日均线，长期趋势压力暂不突出。")
+    elif spy.get("above_200dma") is False or qqq.get("above_200dma") is False:
+        notes.append("趋势状态：SPY 或 QQQ 跌破 200 日均线，需要将其视为风险状态变化，而不是短线交易指令。")
+
+    qqq_spy_1w = qqq_spy.get("return_1w")
+    if qqq_spy_1w is not None:
+        if qqq_spy_1w > 0.01:
+            notes.append("成长股相对表现：QQQ 本周相对 SPY 跑赢，科技成长暴露有所增强。")
+        elif qqq_spy_1w < -0.01:
+            notes.append("成长股相对表现：QQQ 本周相对 SPY 跑输，成长股风险偏好有所降温。")
+        else:
+            notes.append("成长股相对表现：QQQ 与 SPY 本周相对表现接近。")
+
+    if rsp_spy.get("return_1m") is not None and rsp_spy["return_1m"] < -0.03:
+        notes.append("市场宽度：RSP/SPY 近 1 月走弱，S&P 500 表现可能更依赖市值权重股。")
+    if qqew_qqq.get("return_1m") is not None and qqew_qqq["return_1m"] < -0.03:
+        notes.append("Nasdaq-100 宽度：QQEW/QQQ 近 1 月走弱，指数内部上涨可能更集中在大权重公司。")
+
+    dgs10 = macro.get("DGS10", {}).get("weekly_change")
+    if dgs10 is not None:
+        if dgs10 > 0.25:
+            notes.append("利率环境：10 年期美债收益率一周上行超过 25bp，可能提高成长股估值压力。")
+        elif dgs10 > 0:
+            notes.append("利率环境：10 年期美债收益率本周小幅上行，估值压力边际增加。")
+        elif dgs10 < -0.25:
+            notes.append("利率环境：10 年期美债收益率一周下行超过 25bp，贴现率压力有所缓解。")
+
+    signal = portfolio.get("rebalance_signal")
+    if signal == "within_policy_band":
+        notes.append("组合纪律：当前 SPY/QQQ 配置处于政策区间内，不需要因市场波动调整纪律规则。")
+    elif signal:
+        notes.append("组合纪律：当前配置偏离政策区间，后续新增资金优先用于修正偏离。")
+
+    return notes
