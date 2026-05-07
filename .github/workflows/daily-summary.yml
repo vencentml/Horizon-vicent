@@ -16,6 +16,7 @@ on:
     paths:
       - 'data/config.json'
       - 'data/config.example.json'
+      - 'data/global_news_sources.json'
       - 'src/**'
       - 'tests/**'
       - '.github/workflows/daily-summary.yml'
