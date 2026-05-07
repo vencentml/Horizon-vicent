@@ -1,0 +1,12 @@
+{
+  "rss": [
+    {"name": "BBC World News", "url": "https://feeds.bbci.co.uk/news/world/rss.xml", "enabled": true, "category": "global-top-news"},
+    {"name": "NYTimes World", "url": "https://rss.nytimes.com/services/xml/rss/nyt/World.xml", "enabled": true, "category": "global-top-news"},
+    {"name": "The Guardian World", "url": "https://www.theguardian.com/world/rss", "enabled": true, "category": "global-top-news"},
+    {"name": "UN News", "url": "https://news.un.org/feed/subscribe/en/news/all/rss.xml", "enabled": true, "category": "global-risk-and-policy"}
+  ],
+  "category_thresholds": {
+    "global-top-news": 8.2,
+    "global-risk-and-policy": 8.5
+  }
+}
