@@ -13,6 +13,7 @@ class StorageManager:
     def __init__(self, data_dir: str = "data"):
         self.data_dir = Path(data_dir)
         self.config_path = self.data_dir / "config.json"
+        self.global_news_path = self.data_dir / "global_news_sources.json"
         self.summaries_dir = self.data_dir / "summaries"
 
         self.data_dir.mkdir(parents=True, exist_ok=True)
@@ -28,7 +29,29 @@ class StorageManager:
         with open(self.config_path, "r", encoding="utf-8") as f:
             data = json.load(f)
 
+        data = self._merge_global_news_sources(data)
         return Config.model_validate(data)
+
+    def _merge_global_news_sources(self, data: dict) -> dict:
+        if not self.global_news_path.exists():
+            return data
+
+        with open(self.global_news_path, "r", encoding="utf-8") as f:
+            pack = json.load(f)
+
+        sources = data.setdefault("sources", {})
+        rss_sources = sources.setdefault("rss", [])
+        existing_urls = {item.get("url") for item in rss_sources}
+        for item in pack.get("rss", []):
+            url = item.get("url")
+            if url and url not in existing_urls:
+                rss_sources.append(item)
+                existing_urls.add(url)
+
+        filtering = data.setdefault("filtering", {})
+        thresholds = filtering.setdefault("category_thresholds", {})
+        thresholds.update(pack.get("category_thresholds", {}))
+        return data
 
     def save_config(self, config: Config, backup: bool = True) -> Path:
         """Save configuration to config.json, optionally backing up the existing file.
