@@ -1,14 +1,14 @@
 {
   "report": "ukraine-war-weekly",
-  "date": "2026-06-08",
-  "week_id": "2026-W24",
-  "items": 26,
+  "date": "2026-06-15",
+  "week_id": "2026-W25",
+  "items": 25,
   "sources": {
-    "The Guardian Ukraine": 18,
+    "The Guardian Ukraine": 15,
     "BBC Europe News": 4,
-    "War on the Rocks": 4
+    "War on the Rocks": 6
   },
-  "output": "docs/_posts/2026-06-08-ukraine-war-weekly-2026-W24.md",
+  "output": "docs/_posts/2026-06-15-ukraine-war-weekly-2026-W25.md",
   "status": "success",
   "filter_version": "strict-v2"
 }
